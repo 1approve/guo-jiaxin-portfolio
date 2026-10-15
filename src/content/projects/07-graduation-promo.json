@@ -1,0 +1,47 @@
+{
+  "id": "graduation-promo",
+  "order": 7,
+  "number": "07",
+  "category": "毕业展宣发影像",
+  "title": "毕业展宣发影像",
+  "shortTitle": "毕业展宣发",
+  "year": "2026",
+  "role": "视觉概念 / AI 画面沟通 / 剪辑迭代",
+  "tagline": "把展览概念，转成能被看见和传播的动态入口。",
+  "description": "围绕毕业展内容进行宣发影像的素材筛选、视觉概念表达与剪辑迭代。补充留痕记录了从展陈现场回传、片段节选，到“数字牢笼”概念画面、色调衔接、封面停留时间和最终文件交付的完整反馈链。",
+  "poster": "graduation-promo-cover.svg",
+  "cover": "graduation-promo-cover.svg",
+  "stats": ["05 份沟通留痕", "展览现场素材", "AI 概念沟通", "剪辑反馈闭环"],
+  "notesTitle": "补充资料中的项目说明",
+  "resumeNotes": [
+    "从毕业展现场回传素材中筛选适合宣发的片段，避免信息堆叠。",
+    "围绕“数字牢笼”概念完善 AI 画面描述、色调衔接与视觉表达。",
+    "根据反馈调整片段长度、重点内容和封面停留时间，完成版本交付。"
+  ],
+  "analysis": "这组留痕最有价值的部分不是聊天截图本身，而是清楚呈现了一个宣发视频如何被完善：先从现场素材中做取舍，再把抽象概念转成可生成的视觉说明，最后通过节奏、色调与封面时长的细调完成可传播版本。",
+  "abilities": [
+    {"title": "素材判断", "copy": "从大量现场回传中节选有效片段，优先保留能够解释展览主题与空间体验的内容。"},
+    {"title": "概念转译", "copy": "把“数字屏幕时代中的束缚”等抽象表达整理成更明确的 AI 视觉描述。"},
+    {"title": "剪辑沟通", "copy": "根据具体反馈修改片段比重、前后衔接、色调与封面停留时间。"},
+    {"title": "交付闭环", "copy": "将修改意见落实到可审阅版本，并通过文件交付确认最终输出。"}
+  ],
+  "process": [
+    {"number": "01", "title": "现场素材回传与筛选", "summary": "先从展览现场素材中确认可用画面。", "improvement": "对现场屏幕、空间与作品画面进行节选，减少重复内容，让宣发短片尽快建立主题和视觉记忆点。", "deliverables": ["现场素材池", "片段初选", "重点画面清单"], "evidence": ["graduation-promo/feedback-01.png", "graduation-promo/feedback-02.jpg"]},
+    {"number": "02", "title": "数字牢笼概念转译", "summary": "把抽象策展语言变成可生成、可剪辑的画面方向。", "improvement": "在 AI 描述中补足创作意图、数字屏幕语境与人物被屏幕包围的关系，使生成结果更接近展览主题，而不是只追求蓝色科技感。", "deliverables": ["AI 描述方向", "数字牢笼画面", "概念关键词"], "evidence": ["graduation-promo/feedback-03.jpg", "graduation-promo/feedback-04.jpg"]},
+    {"number": "03", "title": "色调与节奏衔接", "summary": "让概念镜头与现场素材在同一条时间线上成立。", "improvement": "对蓝色调、首尾画面和重点段落进行匹配；压缩非必要内容，同时保留与主题最相关的表述和画面。", "deliverables": ["节选版本", "色调衔接", "节奏调整"], "evidence": ["graduation-promo/feedback-02.jpg", "graduation-promo/feedback-04.jpg", "graduation-promo/feedback-05.jpg"]},
+    {"number": "04", "title": "封面时长与最终交付", "summary": "根据审阅反馈完成最后的传播适配。", "improvement": "延长封面停留时间，复核视频内容与文件版本；将确认后的成片作为独立文件完成交付。", "deliverables": ["封面时长调整", "最终审阅版", "交付文件"], "evidence": ["graduation-promo/feedback-05.jpg", "graduation-promo/feedback-03.jpg"]}
+  ],
+  "gallery": ["graduation-promo/feedback-01.png", "graduation-promo/feedback-02.jpg", "graduation-promo/feedback-03.jpg", "graduation-promo/feedback-04.jpg", "graduation-promo/feedback-05.jpg"],
+  "workArchive": {
+    "title": "毕业展宣发反馈与交付留痕",
+    "description": "按时间顺序保留现场回传、节选意见、概念讨论、色调调整和文件交付记录，用来佐证宣发视频从素材到定稿的反馈闭环。",
+    "files": [
+      {"file": "graduation-promo/feedback-01.png", "label": "展览现场画面连续回传"},
+      {"file": "graduation-promo/feedback-02.jpg", "label": "素材节选与重点内容反馈"},
+      {"file": "graduation-promo/feedback-03.jpg", "label": "数字牢笼版本确认与延展素材"},
+      {"file": "graduation-promo/feedback-04.jpg", "label": "AI 概念描述与色调衔接讨论"},
+      {"file": "graduation-promo/feedback-05.jpg", "label": "封面时长调整与最终文件交付"}
+    ]
+  },
+  "downloads": []
+}

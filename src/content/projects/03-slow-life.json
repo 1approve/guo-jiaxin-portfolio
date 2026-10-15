@@ -12,12 +12,12 @@
   "poster": "slow-life-poster.webp",
   "cover": "slow-life-poster.webp",
   "video": {
-    "full": "slow-life-full.mp4",
+    "full": "slow-life-full-20261016.mp4",
     "preview": "slow-life-preview.mp4",
-    "duration": "05:12",
+    "duration": "05:05",
     "label": "完整版正片"
   },
-  "stats": ["05:12 完整正片", "导演 + 编剧", "摄影 + 后期", "冷暖色转折"],
+  "stats": ["05:05 完整正片", "导演 + 编剧", "摄影 + 后期", "冷暖色转折"],
   "resumeNotes": [
     "承担导演、编剧、摄影及后期，负责剧本修改、分镜协调与拍摄统筹。",
     "根据人物关系、情绪与空间条件选择景别、机位及构图，并调整现场顺序。",
@@ -28,20 +28,22 @@
     {"title": "编剧结构", "copy": "围绕“停下来感知生活”重构 5 分钟叙事，用倒叙开场和回归现实形成转折。"},
     {"title": "现场导演", "copy": "协调演员、场地、景别与机位，在真实限制下维持人物关系和情绪连续。"},
     {"title": "摄影表达", "copy": "以冷色高压段和暖色松弛段建立可感知的视觉变化。"},
-    {"title": "后期统筹", "copy": "完成素材筛选、结构调整、字幕、声音和节奏校对，交付 5 分 12 秒正片。"}
+    {"title": "后期统筹", "copy": "完成素材筛选、结构调整、字幕、声音和节奏校对，交付 5 分 05 秒正片。"}
   ],
   "process": [
     {"number": "01", "title": "主题与剧本重写", "summary": "将抽象的“慢下来”转成可见的人物行动。", "improvement": "用任务压力、拒绝邀约、朋友介入和重新感知生活四个段落建立因果；脚本表格明确时间、画面、台词、景别、运镜与音乐。", "deliverables": ["5 分钟定稿剧本", "情绪节点", "冷暖色设计"], "evidence": ["slow-evidence/script-01.png", "slow-evidence/script-02.png"]},
-    {"number": "02", "title": "分镜与拍摄统筹", "summary": "根据校园空间、人物关系和现场条件安排镜头。", "improvement": "为高压段使用更紧的景别与偏冷画面，为松弛段增加双人关系和环境镜头；调整拍摄顺序以适应场地与演员时间。", "deliverables": ["分镜协调", "场地与演员统筹", "机位设计"], "evidence": ["slow-life-poster.webp", "slow-evidence/script-02.png"]},
-    {"number": "03", "title": "现场表演与摄影", "summary": "让人物变化通过动作、距离和空间关系被看见。", "improvement": "对表演节奏和眼神停顿进行现场调整；通过固定镜头与运动镜头的比例变化，区分封闭状态与重新参与生活。", "deliverables": ["真人拍摄素材", "表演调度", "现场摄影"], "evidence": ["slow-life-poster.webp"]},
-    {"number": "04", "title": "剪辑与声音设计", "summary": "以完整正片为主，片花仅作为传播物料。", "improvement": "重新控制段落时长与转场位置，保证倒叙信息可读；在剪映工程中完成对白切分、字幕节点、补帧、变速、音乐与环境声组织，避免将片花误作最终作品。", "deliverables": ["05:12 完整正片", "00:28 片花", "字幕与声音", "剪辑工程留痕"], "evidence": ["slow-evidence/editing-timeline.png", "slow-evidence/script-01.png", "slow-life-poster.webp"]},
+    {"number": "02", "title": "分镜与拍摄统筹", "summary": "根据校园空间、人物关系和现场条件安排镜头。", "improvement": "为高压段使用更紧的景别与偏冷画面，为松弛段增加双人关系和环境镜头；调整拍摄顺序以适应场地与演员时间，并在开拍前完成机身、供电、监看与附件清点。", "deliverables": ["分镜协调", "场地与演员统筹", "器材清单与机位设计"], "evidence": ["slow-evidence/shooting-kit-01.jpg", "slow-evidence/shooting-kit-02.jpg", "slow-evidence/script-02.png"]},
+    {"number": "03", "title": "现场表演与摄影", "summary": "让人物变化通过动作、距离和空间关系被看见。", "improvement": "对表演节奏和眼神停顿进行现场调整；通过固定镜头与运动镜头的比例变化，区分封闭状态与重新参与生活。器材转运留痕进一步说明现场摄影并非概念描述，而是实际完成的执行环节。", "deliverables": ["真人拍摄素材", "表演调度", "现场摄影与器材执行"], "evidence": ["slow-evidence/shooting-kit-02.jpg", "slow-evidence/shooting-kit-01.jpg", "slow-life-poster.webp"]},
+    {"number": "04", "title": "剪辑与声音设计", "summary": "以完整正片为主，片花仅作为传播物料。", "improvement": "重新控制段落时长与转场位置，保证倒叙信息可读；在剪映工程中完成对白切分、字幕节点、补帧、变速、音乐与环境声组织，避免将片花误作最终作品。", "deliverables": ["05:05 完整正片", "00:28 片花", "字幕与声音", "剪辑工程留痕"], "evidence": ["slow-evidence/editing-timeline.png", "slow-evidence/script-01.png", "slow-life-poster.webp"]},
     {"number": "05", "title": "报名材料与交付", "summary": "整理成片、海报、脚本与报名资料。", "improvement": "把创作内容转为可审阅的完整提交包，确保片名、主创、时长和文件版本一致。", "deliverables": ["完整正片", "项目海报", "报名资料与脚本"], "evidence": ["slow-evidence/registration-01.jpg", "slow-evidence/registration-02.jpg", "slow-evidence/registration-03.jpg", "slow-evidence/registration-04.jpg"]}
   ],
-  "gallery": ["slow-life-poster.webp", "slow-evidence/editing-timeline.png", "slow-evidence/script-01.png", "slow-evidence/script-02.png", "slow-evidence/registration-01.jpg", "slow-evidence/registration-02.jpg", "slow-evidence/registration-03.jpg", "slow-evidence/registration-04.jpg"],
+  "gallery": ["slow-life-poster.webp", "slow-evidence/shooting-kit-01.jpg", "slow-evidence/shooting-kit-02.jpg", "slow-evidence/editing-timeline.png", "slow-evidence/script-01.png", "slow-evidence/script-02.png", "slow-evidence/registration-01.jpg", "slow-evidence/registration-02.jpg", "slow-evidence/registration-03.jpg", "slow-evidence/registration-04.jpg"],
   "workArchive": {
-    "title": "《慢度朝夕》剪辑工作留痕",
-    "description": "剪映工程界面记录了完整正片的画面轨、字幕轨、声音素材、补帧与变速节点，是后期结构与节奏调整的直接证据。",
+    "title": "《慢度朝夕》拍摄与剪辑工作留痕",
+    "description": "从摄影器材清点、现场转运，到剪映工程中的画面轨、字幕轨、声音素材、补帧与变速节点，完整保留真人短片从拍摄执行到后期交付的证据链。",
     "files": [
+      {"file": "slow-evidence/shooting-kit-01.jpg", "label": "现场器材装车与转运记录"},
+      {"file": "slow-evidence/shooting-kit-02.jpg", "label": "机身、供电、监看与附件清点"},
       {"file": "slow-evidence/editing-timeline.png", "label": "剪映完整时间线与声音素材组织"},
       {"file": "slow-evidence/script-01.png", "label": "定稿拍摄脚本与时间结构"},
       {"file": "slow-evidence/script-02.png", "label": "景别、运镜、画面与声音设计"}

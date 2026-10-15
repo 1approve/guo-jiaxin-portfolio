@@ -146,7 +146,7 @@ img, video { display: block; max-width: 100%; }
 .projects-section { background: #080a09; }
 .project-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 13px; }
 .project-card { position: relative; min-height: 620px; overflow: hidden; padding: 0; display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 22px; color: var(--text); background: var(--panel); text-align: left; }
-.project-card-1, .project-card-2 { grid-column: span 6; }.project-card-3, .project-card-4, .project-card-5 { grid-column: span 4; min-height: 520px; }.project-card-6 { grid-column: span 12; min-height: 430px; display: grid; grid-template-columns: 1.35fr .65fr; }
+.project-card-1, .project-card-2 { grid-column: span 6; }.project-card-3, .project-card-4, .project-card-5 { grid-column: span 4; min-height: 520px; }.project-card-6, .project-card-7 { grid-column: span 6; min-height: 500px; }
 .card-image { position: relative; flex: 1; min-height: 330px; overflow: hidden; }
 .card-image img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.74); transition: .8s var(--ease); }
 .project-card-2 .card-image img { object-position: center 58%; }
@@ -155,7 +155,7 @@ img, video { display: block; max-width: 100%; }
 .card-copy { padding: 22px 24px 27px; display: flex; flex-direction: column; }
 .card-copy small { color: var(--acid); font: .55rem Consolas, monospace; letter-spacing: .1em; }.card-copy b { margin: 10px 0 6px; font-size: clamp(1.8rem, 2.7vw, 3.5rem); line-height: 1; letter-spacing: -.05em; }.card-copy em { color: #949b92; font-size: .61rem; font-style: normal; }.card-copy > span { margin-top: 18px; color: #c3c8c0; font-size: .68rem; }
 .card-arrow { position: absolute; top: 18px; right: 18px; width: 44px; height: 44px; display: grid; place-items: center; color: var(--ink); background: var(--acid); border-radius: 50%; }
-.project-card-6 .card-image { min-height: 430px; }.project-card-6 .card-copy { justify-content: flex-end; padding: 48px; }
+.project-card-6 .card-image, .project-card-7 .card-image { min-height: 330px; }
 
 /* Evidence teaser */
 .archive-section { color: var(--ink); background: var(--paper); }
@@ -228,7 +228,7 @@ img, video { display: block; max-width: 100%; }
   .hero-layout { min-height: auto; padding-bottom: 90px; }.hero-copy h1, .hero-copy h2 { font-size: clamp(4rem, 15vw, 7rem); }.kinetic-words { height: clamp(67px, 15vw, 105px); }.kinetic-words span { font-size: clamp(3.3rem, 13vw, 6.3rem); }.hero-feature { min-height: 560px; }
   .section-title { grid-template-columns: 1fr; gap: 22px; }.profile-panel { grid-template-columns: 1fr; }.profile-panel figure { min-height: 650px; border-right: 0; border-bottom: 1px solid rgba(0,0,0,.24); }
   .method-map { min-height: auto; padding: 18px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }.method-map svg { display: none; }.method-node { position: relative; inset: auto !important; width: auto; min-height: 150px; }.method-node:last-child { grid-column: span 2; }
-  .project-card-1, .project-card-2, .project-card-3, .project-card-4, .project-card-5, .project-card-6 { grid-column: span 6; min-height: 500px; display: flex; }.project-card-6 .card-image { min-height: 330px; }.project-card-6 .card-copy { padding: 22px 24px 27px; }
+  .project-card-1, .project-card-2, .project-card-3, .project-card-4, .project-card-5, .project-card-6, .project-card-7 { grid-column: span 6; min-height: 500px; display: flex; }.project-card-6 .card-image, .project-card-7 .card-image { min-height: 330px; }
   .archive-strip { grid-template-columns: repeat(3, 1fr); }
   .case-shell { display: flex; flex-direction: column; }.case-main { width: 100%; }.case-rail { order: -1; width: 100%; border-left: 0; }.rail-inner { position: static; max-height: none; margin-top: 54px; padding: 24px; border: 1px solid var(--line); }.rail-inner section:not(.rail-analysis) { display: none; }.rail-inner nav { grid-template-columns: repeat(4, 1fr); }
   .workflow-detail { grid-template-columns: 1fr; }.workflow-copy { border-right: 0; border-bottom: 1px solid var(--line); }.project-facts { grid-template-columns: repeat(2, 1fr); }.result-gallery button { min-height: 340px; }.evidence-grid { grid-template-columns: repeat(2, 1fr); }

@@ -12,12 +12,12 @@
   "poster": "lantern-poster-main.png",
   "cover": "lantern-poster.webp",
   "video": {
-    "full": "lantern-full.mp4",
+    "full": "lantern-full-20261016.mp4",
     "preview": "lantern-preview.mp4",
-    "duration": "03:23",
+    "duration": "03:19",
     "label": "完整成片"
   },
-  "stats": ["54 镜完整设计", "03:23 完整成片", "26 份工作留痕", "54 张逐镜画面"],
+  "stats": ["54 镜完整设计", "03:19 完整成片", "25 份项目留痕", "54 张逐镜画面"],
   "resumeNotes": [
     "围绕传统文化题材完成选题、剧本梳理与导演设计，将故事拆解为 54 镜。",
     "建立盛唐长安东方绘本视觉标准，统一角色服饰、场景结构与核心道具。",
@@ -29,7 +29,7 @@
     {"title": "导演拆解", "copy": "把主题与人物行动拆成 54 个可执行镜头，先解决叙事节奏，再决定生成方式。"},
     {"title": "连续性控制", "copy": "用角色设定、场景板、首尾帧与提示词锁定人物、空间、道具和光色。"},
     {"title": "生成统筹", "copy": "记录版本差异，针对肢体、镜向与构图漂移逐镜修正，而不是一次出图。"},
-    {"title": "剪辑交付", "copy": "通过筛选、节奏、音效、字幕和画面校对，将素材组织为完整 3 分 23 秒成片。"}
+    {"title": "剪辑交付", "copy": "通过筛选、节奏、音效、字幕和画面校对，将素材组织为完整 3 分 19 秒成片。"}
   ],
   "process": [
     {
@@ -62,19 +62,19 @@
       "summary": "把分散的生成镜头组织为情绪递进明确的完整成片。",
       "improvement": "在 Premiere 中重排镜头长度，补足动作衔接与视线逻辑；同步处理旁白、BGM、环境声和字幕，让画面从演示素材变成叙事作品。",
       "deliverables": ["剪辑工程留痕", "AI 音乐与声音记录", "字幕与节奏校对"],
-      "evidence": ["traces/trace-03.jpg", "traces/trace-06.png", "traces/trace-19.png", "traces/trace-20.jpg"]
+      "evidence": ["traces/trace-03.jpg", "traces/trace-19.png", "traces/trace-20.jpg"]
     },
     {
       "number": "05",
       "title": "连续性复核与交付",
       "summary": "从故事、视觉与技术三个层面完成最终复核。",
       "improvement": "对角色、空间、道具、色彩节点和声音峰值进行回看，统一字幕和输出规格；最终保留完整成片、海报、54 镜文件和过程证据。",
-      "deliverables": ["03:23 完整成片", "主题海报", "源文档与过程档案"],
+      "deliverables": ["03:19 完整成片", "主题海报", "源文档与过程档案"],
       "evidence": ["lantern-poster-main.png", "traces/trace-21.jpg", "traces/trace-23.jpg"]
     }
   ],
   "gallery": ["lantern-character-asheng.png", "process-scenes.webp", "process-monk.webp", "process-traveller.webp", "process-girl.webp", "process-mother.webp"],
-  "traceFiles": ["trace-01.png", "trace-02.jpg", "trace-03.jpg", "trace-04.jpg", "trace-05.jpg", "trace-06.png", "trace-07.jpg", "trace-08.jpg", "trace-09.jpg", "trace-10.jpg", "trace-11.png", "trace-12.png", "trace-13.png", "trace-14.jpg", "trace-15.jpg", "trace-16.jpg", "trace-17.jpg", "trace-18.jpg", "trace-19.png", "trace-20.jpg", "trace-21.jpg", "trace-22.png", "trace-23.jpg", "trace-24.png", "trace-25.png", "trace-26.png"],
+  "traceFiles": ["trace-01.png", "trace-02.jpg", "trace-03.jpg", "trace-04.jpg", "trace-05.jpg", "trace-07.jpg", "trace-08.jpg", "trace-09.jpg", "trace-10.jpg", "trace-11.png", "trace-12.png", "trace-13.png", "trace-14.jpg", "trace-15.jpg", "trace-16.jpg", "trace-17.jpg", "trace-18.jpg", "trace-19.png", "trace-20.jpg", "trace-21.jpg", "trace-22.png", "trace-23.jpg", "trace-24.png", "trace-25.png", "trace-26.png"],
   "frameCount": 54,
   "downloads": [
     {"label": "54 镜旁白与首尾帧定稿", "file": "lantern-54-shot-final.docx"},

@@ -155,7 +155,7 @@ function Home({ onOpenProject }) {
             <div className="hero-cta"><button type="button" onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>查看完整项目 <span>→</span></button><p>从脚本、视觉设定与镜头生成，到真人拍摄、剪辑合成和最终交付。</p></div>
           </div>
           <button className="hero-feature" type="button" onClick={() => onOpenProject('lantern')}>
-            <ProjectVisual project={lantern} /><span className="media-shade" /><span className="hero-feature-meta"><i>CORE CASE / 01</i><b>一灯渡众生</b><small>54 SHOTS · 03:23 FULL FILM</small></span><span className="round-arrow">↗</span>
+            <ProjectVisual project={lantern} /><span className="media-shade" /><span className="hero-feature-meta"><i>CORE CASE / 01</i><b>一灯渡众生</b><small>54 SHOTS · {lantern.video.duration} FULL FILM</small></span><span className="round-arrow">↗</span>
           </button>
         </div>
         <p className="scroll-cue">SCROLL TO EXPLORE <span>↓</span></p>
@@ -167,7 +167,7 @@ function Home({ onOpenProject }) {
         <SectionTitle index="01" kicker="PROFILE">不只生成画面，<br />也建立画面的规则。</SectionTitle>
         <div className="profile-panel">
           <figure><img src="./assets/guo-jiaxin.jpg" alt="郭佳鑫个人肖像" /><figcaption><span>GUO JIAXIN</span><span>CHENGDU / CHINA</span></figcaption></figure>
-          <article><p>我是郭佳鑫，目标岗位为 <strong>AIGC 视频创作实习生</strong>。我关注的不是单次生成，而是如何把脚本、角色、场景、镜头、声音和剪辑组织成可以复核、可以完善、可以交付的完整流程。</p><dl><div><dt>POSITION</dt><dd>AIGC 视频创作</dd></div><div><dt>EDUCATION</dt><dd>本科 / 视觉设计方向</dd></div><div><dt>FOCUS</dt><dd>导演 · 生成 · 剪辑</dd></div></dl><div className="profile-numbers"><span><b>03</b><small>完整影像项目</small></span><span><b>54</b><small>AIGC 镜头设计</small></span><span><b>06</b><small>当前项目档案</small></span></div><a href={documentAsset('guo-jiaxin-resume.pdf')} target="_blank" rel="noreferrer">查看完整简历 {arrow}</a></article>
+          <article><p>我是郭佳鑫，目标岗位为 <strong>AIGC 视频创作实习生</strong>。我关注的不是单次生成，而是如何把脚本、角色、场景、镜头、声音和剪辑组织成可以复核、可以完善、可以交付的完整流程。</p><dl><div><dt>POSITION</dt><dd>AIGC 视频创作</dd></div><div><dt>EDUCATION</dt><dd>本科 / 视觉设计方向</dd></div><div><dt>FOCUS</dt><dd>导演 · 生成 · 剪辑</dd></div></dl><div className="profile-numbers"><span><b>03</b><small>完整影像项目</small></span><span><b>54</b><small>AIGC 镜头设计</small></span><span><b>{String(projects.length).padStart(2, '0')}</b><small>当前项目档案</small></span></div><a href={documentAsset('guo-jiaxin-resume.pdf')} target="_blank" rel="noreferrer">查看完整简历 {arrow}</a></article>
         </div>
       </div></section>
 
@@ -186,7 +186,7 @@ function Home({ onOpenProject }) {
 
       <section id="archive" className="section-pad archive-section"><div className="page-shell">
         <SectionTitle index="04" kicker="WORKING ARCHIVE">作品之外，<br />保留每一次判断。</SectionTitle>
-        <div className="archive-intro"><p>26 份提示词、角色设定、生成反馈、剪辑时间线和声音记录，不再藏在文件夹里。它们被放回对应流程，用来说明作品如何一步步被完善。</p><button type="button" onClick={() => onOpenProject('lantern')}>打开完整留痕专区 {arrow}</button></div>
+        <div className="archive-intro"><p>{lantern.traceFiles.length} 份提示词、角色设定、生成反馈、剪辑时间线和声音记录，不再藏在文件夹里。它们被放回对应流程，用来说明作品如何一步步被完善。</p><button type="button" onClick={() => onOpenProject('lantern')}>打开完整留痕专区 {arrow}</button></div>
         <div className="archive-strip">{lantern.traceFiles.slice(0, 10).map((file, index) => <figure key={file}><img src={portfolioAsset(`traces/${file}`)} alt={traceLabel(index)} loading="lazy" /><figcaption><span>{String(index + 1).padStart(2, '0')}</span>{traceLabel(index)}</figcaption></figure>)}</div>
       </div></section>
 
@@ -240,7 +240,7 @@ function ProjectCase({ project, onOpenProject, onHome }) {
             <p className="case-kicker">06 / WORKING ARCHIVE</p>
             <header className="case-heading"><h2>{project.workArchive?.title || '工作留痕与逐镜档案'}</h2><p>{project.workArchive?.description || '不是装饰图集，而是从设定、生成到剪辑的过程证据。'}</p></header>
             {project.traceFiles ? <>
-              <div className="archive-tabs"><button type="button" className={archiveTab === 'trace' ? 'active' : ''} onClick={() => setArchiveTab('trace')}>26 份工作留痕</button><button type="button" className={archiveTab === 'frames' ? 'active' : ''} onClick={() => setArchiveTab('frames')}>54 张逐镜画面</button></div>
+              <div className="archive-tabs"><button type="button" className={archiveTab === 'trace' ? 'active' : ''} onClick={() => setArchiveTab('trace')}>{project.traceFiles.length} 份项目留痕</button><button type="button" className={archiveTab === 'frames' ? 'active' : ''} onClick={() => setArchiveTab('frames')}>54 张逐镜画面</button></div>
               {archiveTab === 'trace' ? <div className="evidence-grid">{project.traceFiles.map((file, index) => <button type="button" onClick={() => openImage(`traces/${file}`)} key={file}><img src={portfolioAsset(`traces/${file}`)} alt={traceLabel(index)} loading="lazy" /><span>{String(index + 1).padStart(2, '0')} / {traceLabel(index)}</span></button>)}</div> : <div className="frame-grid">{frames.map((frame, index) => <button type="button" onClick={() => openImage(frame)} key={frame}><img src={portfolioAsset(frame)} alt={`第 ${index + 1} 镜画面`} loading="lazy" /><span>SHOT {String(index + 1).padStart(2, '0')}</span></button>)}</div>}
             </> : <div className="evidence-grid">{project.workArchive.files.map((item, index) => <button type="button" onClick={() => openImage(item.file)} key={item.file}><img src={portfolioAsset(item.file)} alt={item.label} loading="lazy" /><span>{String(index + 1).padStart(2, '0')} / {item.label}</span></button>)}</div>}
           </section>}
@@ -250,7 +250,7 @@ function ProjectCase({ project, onOpenProject, onHome }) {
           <section className="next-case"><p>NEXT PROJECT</p><button type="button" onClick={() => onOpenProject(nextProject.id)}><span>{nextProject.number} / {nextProject.category}</span><b>{nextProject.title}</b>{arrow}</button></section>
         </div>
 
-        <aside className="case-rail"><div className="rail-inner"><p>PROJECT INDEX / {project.number}</p><nav aria-label="项目页分区"><a href="#overview">项目介绍</a><a href="#abilities">个人能力</a>{project.video && <a href="#film">完整成片</a>}<a href="#workflow">完整流程</a><a href="#gallery">成果展示</a>{hasArchive && <a href="#evidence">工作留痕</a>}{project.downloads?.length > 0 && <a href="#documents">项目文档</a>}</nav><section><h3>简历中的项目说明</h3><ol>{project.resumeNotes.map((note) => <li key={note}>{note}</li>)}</ol></section><section className="rail-analysis"><h3>项目解析与补充</h3><p>{project.analysis}</p></section><section><h3>职责</h3><p>{project.role}</p></section></div></aside>
+        <aside className="case-rail"><div className="rail-inner"><p>PROJECT INDEX / {project.number}</p><nav aria-label="项目页分区"><a href="#overview">项目介绍</a><a href="#abilities">个人能力</a>{project.video && <a href="#film">完整成片</a>}<a href="#workflow">完整流程</a><a href="#gallery">成果展示</a>{hasArchive && <a href="#evidence">工作留痕</a>}{project.downloads?.length > 0 && <a href="#documents">项目文档</a>}</nav><section><h3>{project.notesTitle || '简历中的项目说明'}</h3><ol>{project.resumeNotes.map((note) => <li key={note}>{note}</li>)}</ol></section><section className="rail-analysis"><h3>项目解析与补充</h3><p>{project.analysis}</p></section><section><h3>职责</h3><p>{project.role}</p></section></div></aside>
       </div>
       <Lightbox image={lightbox} onClose={() => setLightbox(null)} />
     </main>

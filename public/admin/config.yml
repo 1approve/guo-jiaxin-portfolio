@@ -39,11 +39,21 @@ collections:
         name: stats
         widget: list
         field: { label: 标签, name: stat, widget: string }
+      - { label: 侧栏说明标题, name: notesTitle, widget: string, required: false, hint: "默认显示为：简历中的项目说明" }
       - label: 简历说明
         name: resumeNotes
         widget: list
         field: { label: 说明, name: note, widget: text }
       - { label: 项目解析, name: analysis, widget: text }
+      - label: 完整视频
+        name: video
+        widget: object
+        required: false
+        fields:
+          - { label: 正片文件名, name: full, widget: string }
+          - { label: 预览或片花文件名, name: preview, widget: string, required: false }
+          - { label: 时长, name: duration, widget: string, hint: "例如 05:05" }
+          - { label: 视频标题, name: label, widget: string }
       - label: 个人能力
         name: abilities
         widget: list
@@ -70,6 +80,25 @@ collections:
         name: gallery
         widget: list
         field: { label: 图片路径, name: image, widget: string }
+      - label: 独立工作留痕专区
+        name: workArchive
+        widget: object
+        required: false
+        fields:
+          - { label: 专区标题, name: title, widget: string }
+          - { label: 专区说明, name: description, widget: text }
+          - label: 留痕文件
+            name: files
+            widget: list
+            fields:
+              - { label: 图片路径, name: file, widget: string }
+              - { label: 图片说明, name: label, widget: string }
+      - label: 一灯项目留痕文件名
+        name: traceFiles
+        widget: list
+        required: false
+        field: { label: 文件名, name: file, widget: string }
+      - { label: 一灯逐镜数量, name: frameCount, widget: number, required: false, value_type: int }
       - label: 下载文档
         name: downloads
         widget: list

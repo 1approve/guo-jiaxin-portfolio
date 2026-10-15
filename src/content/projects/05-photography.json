@@ -11,7 +11,7 @@
   "description": "以日常现场为对象的摄影练习，关注自然光、空间层次、人物与环境关系。这个分区承担视觉观察档案的作用，后续新增摄影作品可直接通过内容后台继续补充。",
   "poster": "photo-01.webp",
   "cover": "photo-01.webp",
-  "stats": ["04 张当前作品", "自然光观察", "构图训练", "持续更新"],
+  "stats": ["10 张当前作品", "星空与地貌", "街头纪实", "持续更新"],
   "resumeNotes": ["持续进行摄影与画面观察练习，积累真实空间中的光线、构图和视觉节奏经验。", "摄影经验用于支持真人拍摄和 AIGC 镜头中的景别、光线与空间判断。"],
   "analysis": "摄影不是独立于视频的附属技能，而是导演判断的基础。对真实光线、空间深度和画面重心的观察，会直接影响生成提示词、分镜构图与剪辑中的镜头选择。",
   "abilities": [
@@ -21,11 +21,12 @@
     {"title": "镜头迁移", "copy": "把摄影观察转化为视频分镜和生成画面的景别、机位与光色说明。"}
   ],
   "process": [
-    {"number": "01", "title": "观察与选题", "summary": "从日常空间中识别值得保留的光线与关系。", "improvement": "先明确画面关注点，再决定站位与焦段，减少没有主体的随拍。", "deliverables": ["观察笔记", "拍摄主题"], "evidence": ["photo-01.webp", "photo-02.webp"]},
-    {"number": "02", "title": "构图与曝光", "summary": "控制空间层次、留白、色彩与明暗。", "improvement": "在拍摄现场主动移动位置，比较不同视角对画面重心和叙事信息的影响。", "deliverables": ["原始照片", "构图选择"], "evidence": ["photo-02.webp", "photo-03.webp"]},
-    {"number": "03", "title": "筛选与整理", "summary": "从相近画面中选择信息最清楚的一张。", "improvement": "按光线、空间和人物关系建立筛选标准，统一色调并保留真实质感。", "deliverables": ["精选照片", "系列归档"], "evidence": ["photo-01.webp", "photo-03.webp", "photo-04.webp"]}
+    {"number": "01", "title": "星空与地貌观察", "summary": "用极暗环境和大面积留白训练曝光、层次与尺度判断。", "improvement": "在银河、沙丘和云层之间建立明确的天地比例；让地景承担尺度参照，避免夜景只剩技术性曝光。", "deliverables": ["星空摄影", "沙漠地貌", "低照度观察"], "evidence": ["photo-05.jpg", "photo-06.jpg"]},
+    {"number": "02", "title": "形式构图训练", "summary": "从树枝、天空和负空间中提炼结构。", "improvement": "利用仰拍和高反差把复杂枝干整理成可读的线性秩序，训练画面边缘控制与视觉重心。", "deliverables": ["黑白关系", "线条构图", "负空间练习"], "evidence": ["photo-07.jpg", "photo-02.webp", "photo-03.webp"]},
+    {"number": "03", "title": "街头纪实观察", "summary": "在日常劳动与交易中捕捉人物和环境关系。", "improvement": "通过等待动作节点、控制背景干扰和保留环境信息，让人物状态、职业属性与城市空间同时成立。", "deliverables": ["街头人物", "劳动现场", "环境肖像"], "evidence": ["photo-08.jpg", "photo-09.jpg", "photo-10.jpg"]},
+    {"number": "04", "title": "筛选与系列归档", "summary": "把自然景观、形式研究与街头纪实整理为可持续扩充的观察档案。", "improvement": "按题材、画幅与视觉关注点建立筛选标准，保留原始比例和真实质感，让摄影经验可继续反哺分镜、生成提示词和现场拍摄。", "deliverables": ["10 张精选照片", "三类观察主题", "持续更新档案"], "evidence": ["photo-05.jpg", "photo-07.jpg", "photo-09.jpg"]}
   ],
-  "gallery": ["photo-01.webp", "photo-02.webp", "photo-03.webp", "photo-04.webp"],
+  "gallery": ["photo-05.jpg", "photo-06.jpg", "photo-07.jpg", "photo-08.jpg", "photo-09.jpg", "photo-10.jpg", "photo-01.webp", "photo-02.webp", "photo-03.webp", "photo-04.webp"],
   "downloads": []
 }
 
