@@ -6,10 +6,22 @@
     <meta name="theme-color" content="#050607" />
     <meta name="description" content="郭佳鑫的 AIGC 视频创作作品集，涵盖导演统筹、生成连续性、剪辑后期与视觉设计。" />
     <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <title>郭佳鑫｜AIGC 视频创作实习生</title>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on('init', function (user) {
+          if (!user) {
+            window.netlifyIdentity.on('login', function () {
+              window.location.href = '/admin/';
+            });
+          }
+        });
+      }
+    </script>
   </body>
 </html>
