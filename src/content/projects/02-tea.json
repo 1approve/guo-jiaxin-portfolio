@@ -1,0 +1,44 @@
+{
+  "id": "tea",
+  "order": 2,
+  "number": "02",
+  "category": "文创系统 / 沉浸体验",
+  "title": "《一叶生长》",
+  "shortTitle": "一叶生长",
+  "year": "2026",
+  "role": "品牌概念 / 视觉统筹 / 数字体验",
+  "tagline": "让一片茶叶，从平面生长到空间体验。",
+  "description": "从雅安茶文化提炼“一叶、一液、一业、一夜”的叙事，将视觉系统延伸至礼盒、明信片、展板与茶马古道沉浸式 VR 体验，建立实体文创与数字内容之间的连接。",
+  "poster": "tea-poster-main.jpg",
+  "cover": "tea-poster-main.jpg",
+  "video": {
+    "full": "tea-vr-full.mp4",
+    "preview": "tea-vr-preview.mp4",
+    "duration": "02:35",
+    "label": "完整 VR 体验影像"
+  },
+  "stats": ["06 组视觉成果", "02:35 VR 影像", "线上线下联动", "雅安茶文化"],
+  "resumeNotes": [
+    "整理雅安茶文化与地域文旅资料，参与提炼“一叶、一液、一业、一夜”概念。",
+    "围绕叶脉与自然要素建立主视觉，统一茶罐、明信片、杯垫、雨伞等产品语言。",
+    "规划扫码进入数字文旅内容的体验，使实体明信片连接移动端影像。",
+    "整合品牌概念、产品系统、展板与传播内容。"
+  ],
+  "analysis": "这个项目证明了跨媒介系统能力：一个文化概念既能在海报与包装中成立，也能进入移动端与沉浸影像。重点不是单件设计，而是同一叙事在不同触点上的一致性与可延展性。",
+  "abilities": [
+    {"title": "文化提炼", "copy": "从地域资料中找到可识别、可延展的“一叶、一液、一业、一夜”内容骨架。"},
+    {"title": "品牌系统", "copy": "以叶脉、山水、金色与茶绿色形成统一视觉语法，并适配不同载体。"},
+    {"title": "跨媒介转译", "copy": "把海报、礼盒、明信片和数字体验组织在同一用户路径中。"},
+    {"title": "体验叙事", "copy": "用 VR 影像扩展茶马古道空间，让文化信息从静态阅读转向沉浸体验。"}
+  ],
+  "process": [
+    {"number": "01", "title": "文化调研与概念提炼", "summary": "梳理雅安茶文化、自然景观与文旅使用场景。", "improvement": "从宽泛的地域符号中收束出“一叶、一液、一业、一夜”四层概念，让后续产品和影像共享同一叙事来源。", "deliverables": ["文化关键词", "用户触点", "概念命名"], "evidence": ["tea-poster-main.jpg", "tea-01.webp"]},
+    {"number": "02", "title": "主视觉与版式系统", "summary": "建立叶脉、山水、日月与金色线条的视觉关系。", "improvement": "统一留白、文字层级与色彩比例，使视觉既保留东方气质，又能适配现代文创传播。", "deliverables": ["主海报", "字体层级", "颜色与纹样"], "evidence": ["tea-poster-main.jpg", "tea-02.webp"]},
+    {"number": "03", "title": "文创产品延展", "summary": "把视觉语言落在礼盒、明信片与系列展示物中。", "improvement": "根据载体比例重新组织图形，而不是简单贴图；控制主叶形、文字与留白在产品间的识别一致性。", "deliverables": ["礼盒", "明信片", "系列展示物"], "evidence": ["tea-05.webp", "tea-06.webp", "tea-03.webp"]},
+    {"number": "04", "title": "数字入口与 VR 体验", "summary": "让实体文创成为数字内容的入口。", "improvement": "通过扫码路径把静态产品连接到茶马古道沉浸影像，补足文化体验中的空间感与参与感。", "deliverables": ["扫码路径", "VR 场景", "完整体验影像"], "evidence": ["tea-04.webp", "tea-06.webp"]},
+    {"number": "05", "title": "系统整合与展示", "summary": "校对不同媒介上的视觉一致性与信息优先级。", "improvement": "将概念、产品、展板与影像归档为完整案例，保证观者能理解从文化研究到体验交付的因果链。", "deliverables": ["项目展板", "完整影像", "产品组合"], "evidence": ["tea-01.webp", "tea-05.webp", "tea-poster-main.jpg"]}
+  ],
+  "gallery": ["tea-poster-main.jpg", "tea-01.webp", "tea-02.webp", "tea-03.webp", "tea-04.webp", "tea-05.webp", "tea-06.webp"],
+  "downloads": []
+}
+

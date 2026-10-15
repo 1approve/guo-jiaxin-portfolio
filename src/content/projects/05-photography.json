@@ -1,0 +1,31 @@
+{
+  "id": "photography",
+  "order": 5,
+  "number": "05",
+  "category": "摄影观察",
+  "title": "摄影练习与现场观察",
+  "shortTitle": "摄影",
+  "year": "持续更新",
+  "role": "摄影 / 构图 / 光线观察",
+  "tagline": "先看见，再决定镜头如何说话。",
+  "description": "以日常现场为对象的摄影练习，关注自然光、空间层次、人物与环境关系。这个分区承担视觉观察档案的作用，后续新增摄影作品可直接通过内容后台继续补充。",
+  "poster": "photo-01.webp",
+  "cover": "photo-01.webp",
+  "stats": ["04 张当前作品", "自然光观察", "构图训练", "持续更新"],
+  "resumeNotes": ["持续进行摄影与画面观察练习，积累真实空间中的光线、构图和视觉节奏经验。", "摄影经验用于支持真人拍摄和 AIGC 镜头中的景别、光线与空间判断。"],
+  "analysis": "摄影不是独立于视频的附属技能，而是导演判断的基础。对真实光线、空间深度和画面重心的观察，会直接影响生成提示词、分镜构图与剪辑中的镜头选择。",
+  "abilities": [
+    {"title": "光线观察", "copy": "识别自然光方向、反差与色温，并判断它们对情绪的影响。"},
+    {"title": "空间构图", "copy": "通过前中后景、留白和视觉重心建立画面秩序。"},
+    {"title": "瞬间选择", "copy": "在真实变化中判断人物、环境与时机的关系。"},
+    {"title": "镜头迁移", "copy": "把摄影观察转化为视频分镜和生成画面的景别、机位与光色说明。"}
+  ],
+  "process": [
+    {"number": "01", "title": "观察与选题", "summary": "从日常空间中识别值得保留的光线与关系。", "improvement": "先明确画面关注点，再决定站位与焦段，减少没有主体的随拍。", "deliverables": ["观察笔记", "拍摄主题"], "evidence": ["photo-01.webp", "photo-02.webp"]},
+    {"number": "02", "title": "构图与曝光", "summary": "控制空间层次、留白、色彩与明暗。", "improvement": "在拍摄现场主动移动位置，比较不同视角对画面重心和叙事信息的影响。", "deliverables": ["原始照片", "构图选择"], "evidence": ["photo-02.webp", "photo-03.webp"]},
+    {"number": "03", "title": "筛选与整理", "summary": "从相近画面中选择信息最清楚的一张。", "improvement": "按光线、空间和人物关系建立筛选标准，统一色调并保留真实质感。", "deliverables": ["精选照片", "系列归档"], "evidence": ["photo-01.webp", "photo-03.webp", "photo-04.webp"]}
+  ],
+  "gallery": ["photo-01.webp", "photo-02.webp", "photo-03.webp", "photo-04.webp"],
+  "downloads": []
+}
+

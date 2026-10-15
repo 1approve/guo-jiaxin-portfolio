@@ -1,0 +1,37 @@
+{
+  "id": "chengdu",
+  "order": 4,
+  "number": "04",
+  "category": "城市文化视觉系统",
+  "title": "成都文化视觉转译",
+  "shortTitle": "成都文化视觉",
+  "year": "2025",
+  "role": "文化调研 / 图形设计 / 系列海报",
+  "tagline": "让五处地标，共享一种城市语言。",
+  "description": "从宽窄巷子、杜甫草堂、武侯祠、大熊猫基地与金沙遗址提炼建筑、文物和地域符号，以统一构图、字体与高饱和色彩形成五张系列海报。",
+  "poster": "chengdu-wuhou.webp",
+  "cover": "chengdu-wuhou.webp",
+  "stats": ["05 张系列海报", "05 处文化地标", "统一视觉规范", "ACP 投稿"],
+  "resumeNotes": [
+    "调研宽窄巷子、杜甫草堂、武侯祠、熊猫基地与金沙遗址的文化元素。",
+    "将建筑、历史文物与地域符号转化为可识别的图形语言。",
+    "统一构图、字体层级、色彩关系与版式规范，同时保留五处地标的差异。",
+    "根据反馈调整为更明确的高饱和配色并完成系列投稿。"
+  ],
+  "analysis": "这一系列证明了视觉标准建立能力。相同的构图骨架、文字系统和色彩强度让五张作品形成家族感，同时每处地标仍保留独立符号；这套方法也能直接迁移到 AIGC 角色、场景与镜头的一致性控制。",
+  "abilities": [
+    {"title": "信息研究", "copy": "从建筑、文物与城市记忆中筛选能够被快速识别的核心符号。"},
+    {"title": "图形转译", "copy": "把历史元素重组成现代平面语言，控制复杂度与可读性。"},
+    {"title": "系统规范", "copy": "统一网格、字体、色彩和信息层级，建立系列而非单张海报。"},
+    {"title": "反馈迭代", "copy": "根据评审意见提高色彩饱和度与视觉冲击，同时保持系列秩序。"}
+  ],
+  "process": [
+    {"number": "01", "title": "地标调研", "summary": "梳理五处场所的历史、建筑与代表性物件。", "improvement": "从旅游图像中剔除同质化元素，为每处地点留下最有辨识度的视觉锚点。", "deliverables": ["地标资料", "符号清单", "差异化关键词"], "evidence": ["chengdu-kuanzhai.webp", "chengdu-dufu.webp"]},
+    {"number": "02", "title": "母版系统", "summary": "建立五张海报共用的网格与文字层级。", "improvement": "先固定标题、主图与辅助信息的比例，再为每个地标置换独立元素，避免系列失去整体性。", "deliverables": ["版式母版", "字体规则", "构图比例"], "evidence": ["chengdu-wuhou.webp", "chengdu-jinsha.webp"]},
+    {"number": "03", "title": "色彩与图形迭代", "summary": "将文化符号转成高饱和、现代化图形。", "improvement": "依据反馈提升主色纯度和对比度，以更明确的色块分离信息层级，并保持跨海报的一致视觉强度。", "deliverables": ["色彩系统", "五组主图", "反馈版本"], "evidence": ["chengdu-panda.webp", "chengdu-kuanzhai.webp", "chengdu-dufu.webp"]},
+    {"number": "04", "title": "系列校对", "summary": "并排检验五张海报的家族感与差异。", "improvement": "统一边距、字号和视觉重心，对过强或过弱的单张重新平衡，确保任何排列顺序都能形成系列。", "deliverables": ["五张定稿", "输出规范", "投稿文件"], "evidence": ["chengdu-panda.webp", "chengdu-kuanzhai.webp", "chengdu-dufu.webp", "chengdu-wuhou.webp", "chengdu-jinsha.webp"]}
+  ],
+  "gallery": ["chengdu-panda.webp", "chengdu-kuanzhai.webp", "chengdu-dufu.webp", "chengdu-wuhou.webp", "chengdu-jinsha.webp"],
+  "downloads": []
+}
+

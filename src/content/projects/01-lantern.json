@@ -1,0 +1,85 @@
+{
+  "id": "lantern",
+  "order": 1,
+  "number": "01",
+  "category": "AIGC 叙事短片",
+  "title": "《一灯渡众生》",
+  "shortTitle": "一灯渡众生",
+  "year": "2026",
+  "role": "导演 / 生成统筹 / 剪辑后期",
+  "tagline": "把 54 次生成，组织成一部成立的电影。",
+  "description": "围绕传统文化题材完成选题、剧本、54 镜拆解、视觉设定、逐镜生成和后期交付。项目不是展示零散的 AI 画面，而是证明如何用导演方法把不可控生成结果变成连续叙事。",
+  "poster": "lantern-poster-main.png",
+  "cover": "lantern-poster.webp",
+  "video": {
+    "full": "lantern-full.mp4",
+    "preview": "lantern-preview.mp4",
+    "duration": "03:23",
+    "label": "完整成片"
+  },
+  "stats": ["54 镜完整设计", "03:23 完整成片", "26 份工作留痕", "54 张逐镜画面"],
+  "resumeNotes": [
+    "围绕传统文化题材完成选题、剧本梳理与导演设计，将故事拆解为 54 镜。",
+    "建立盛唐长安东方绘本视觉标准，统一角色服饰、场景结构与核心道具。",
+    "以参考图、首尾帧和提示词逐镜修正人物、肢体、场景与道具漂移。",
+    "负责素材筛选、镜头衔接、节奏、字幕、声音整合与成片校对。"
+  ],
+  "analysis": "这是最能体现 AIGC 视频岗位匹配度的核心项目。价值不只在生成质量，而在于建立了从文字到视觉、从单镜到连续叙事、从版本筛选到最终交付的可控链路。54 镜文档和 26 份工作留痕让每一个判断都能回到过程证据。",
+  "abilities": [
+    {"title": "导演拆解", "copy": "把主题与人物行动拆成 54 个可执行镜头，先解决叙事节奏，再决定生成方式。"},
+    {"title": "连续性控制", "copy": "用角色设定、场景板、首尾帧与提示词锁定人物、空间、道具和光色。"},
+    {"title": "生成统筹", "copy": "记录版本差异，针对肢体、镜向与构图漂移逐镜修正，而不是一次出图。"},
+    {"title": "剪辑交付", "copy": "通过筛选、节奏、音效、字幕和画面校对，将素材组织为完整 3 分 23 秒成片。"}
+  ],
+  "process": [
+    {
+      "number": "01",
+      "title": "剧本与镜头拆解",
+      "summary": "把寓言式文本转成可拍、可生成、可衔接的 54 镜任务单。",
+      "improvement": "先锁定每镜的叙事目的、景别、运镜、画面与声音，避免生成后才发现缺少信息镜头；新定稿文档让 54 镜都有首尾帧依据。",
+      "deliverables": ["54 镜旁白与首尾帧制作定稿", "文字分镜", "镜头节奏与声音提示"],
+      "evidence": ["lantern-frames/shot-01.jpg", "lantern-frames/shot-02.jpg", "traces/trace-01.png"]
+    },
+    {
+      "number": "02",
+      "title": "视觉圣经与角色锚点",
+      "summary": "固定盛唐长安东方绘本风格、角色比例、衣着、道具和环境层级。",
+      "improvement": "将阿生、僧人、旅人、女孩等角色从临时提示词提升为可复用参考图；增加三视图、表情和道具板，减少跨镜头身份漂移。",
+      "deliverables": ["角色设定图", "场景气氛板", "核心道具与光色规则"],
+      "evidence": ["lantern-character-asheng.png", "process-monk.webp", "process-girl.webp", "process-scenes.webp"]
+    },
+    {
+      "number": "03",
+      "title": "逐镜生成与版本筛选",
+      "summary": "以参考图、首尾帧和镜号化提示词完成画面生成与动效测试。",
+      "improvement": "针对人物肢体、脸部一致性、屏幕方向与道具状态建立复核点；不合格镜头回到对应锚点重新生成，而不是用剪辑掩盖问题。",
+      "deliverables": ["54 张逐镜画面", "提示词迭代记录", "版本筛选记录"],
+      "evidence": ["traces/trace-12.png", "traces/trace-13.png", "traces/trace-14.jpg"]
+    },
+    {
+      "number": "04",
+      "title": "剪辑、声音与节奏",
+      "summary": "把分散的生成镜头组织为情绪递进明确的完整成片。",
+      "improvement": "在 Premiere 中重排镜头长度，补足动作衔接与视线逻辑；同步处理旁白、BGM、环境声和字幕，让画面从演示素材变成叙事作品。",
+      "deliverables": ["剪辑工程留痕", "AI 音乐与声音记录", "字幕与节奏校对"],
+      "evidence": ["traces/trace-03.jpg", "traces/trace-06.png", "traces/trace-19.png", "traces/trace-20.jpg"]
+    },
+    {
+      "number": "05",
+      "title": "连续性复核与交付",
+      "summary": "从故事、视觉与技术三个层面完成最终复核。",
+      "improvement": "对角色、空间、道具、色彩节点和声音峰值进行回看，统一字幕和输出规格；最终保留完整成片、海报、54 镜文件和过程证据。",
+      "deliverables": ["03:23 完整成片", "主题海报", "源文档与过程档案"],
+      "evidence": ["lantern-poster-main.png", "traces/trace-21.jpg", "traces/trace-23.jpg"]
+    }
+  ],
+  "gallery": ["lantern-character-asheng.png", "process-scenes.webp", "process-monk.webp", "process-traveller.webp", "process-girl.webp", "process-mother.webp"],
+  "traceFiles": ["trace-01.png", "trace-02.jpg", "trace-03.jpg", "trace-04.jpg", "trace-05.jpg", "trace-06.png", "trace-07.jpg", "trace-08.jpg", "trace-09.jpg", "trace-10.jpg", "trace-11.png", "trace-12.png", "trace-13.png", "trace-14.jpg", "trace-15.jpg", "trace-16.jpg", "trace-17.jpg", "trace-18.jpg", "trace-19.png", "trace-20.jpg", "trace-21.jpg", "trace-22.png", "trace-23.jpg", "trace-24.png", "trace-25.png", "trace-26.png"],
+  "frameCount": 54,
+  "downloads": [
+    {"label": "54 镜旁白与首尾帧定稿", "file": "lantern-54-shot-final.docx"},
+    {"label": "文字分镜", "file": "lantern-storyboard.docx"},
+    {"label": "主题海报 PDF", "file": "lantern-poster.pdf"}
+  ]
+}
+

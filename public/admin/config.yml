@@ -1,0 +1,80 @@
+backend:
+  name: github
+  repo: 1approve/guo-jiaxin-portfolio
+  branch: main
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
+
+locale: zh_Hans
+publish_mode: editorial_workflow
+media_folder: public/assets/uploads
+public_folder: /assets/uploads
+
+collections:
+  - name: projects
+    label: 项目管理
+    label_singular: 项目
+    folder: src/content/projects
+    extension: json
+    format: json
+    create: true
+    identifier_field: title
+    slug: "{{fields.order}}-{{slug}}"
+    summary: "{{fields.number}} · {{title}}"
+    sortable_fields: [order, title, year]
+    fields:
+      - { label: 项目标识, name: id, widget: string, hint: "英文短名，例如 new-film" }
+      - { label: 排序, name: order, widget: number, value_type: int }
+      - { label: 编号, name: number, widget: string }
+      - { label: 分类, name: category, widget: string }
+      - { label: 项目标题, name: title, widget: string }
+      - { label: 短标题, name: shortTitle, widget: string }
+      - { label: 年份, name: year, widget: string }
+      - { label: 职责, name: role, widget: string }
+      - { label: 一句话主张, name: tagline, widget: string }
+      - { label: 项目介绍, name: description, widget: text }
+      - { label: 主海报, name: poster, widget: image, media_folder: /public/assets/portfolio, public_folder: "" }
+      - { label: 列表封面, name: cover, widget: image, media_folder: /public/assets/portfolio, public_folder: "" }
+      - label: 数据标签
+        name: stats
+        widget: list
+        field: { label: 标签, name: stat, widget: string }
+      - label: 简历说明
+        name: resumeNotes
+        widget: list
+        field: { label: 说明, name: note, widget: text }
+      - { label: 项目解析, name: analysis, widget: text }
+      - label: 个人能力
+        name: abilities
+        widget: list
+        fields:
+          - { label: 能力标题, name: title, widget: string }
+          - { label: 能力说明, name: copy, widget: text }
+      - label: 完整流程
+        name: process
+        widget: list
+        fields:
+          - { label: 步骤编号, name: number, widget: string }
+          - { label: 步骤标题, name: title, widget: string }
+          - { label: 步骤摘要, name: summary, widget: text }
+          - { label: 如何完善作品, name: improvement, widget: text }
+          - label: 阶段交付
+            name: deliverables
+            widget: list
+            field: { label: 交付物, name: item, widget: string }
+          - label: 流程证据
+            name: evidence
+            widget: list
+            field: { label: 图片路径, name: image, widget: string }
+      - label: 成果画廊
+        name: gallery
+        widget: list
+        field: { label: 图片路径, name: image, widget: string }
+      - label: 下载文档
+        name: downloads
+        widget: list
+        required: false
+        fields:
+          - { label: 名称, name: label, widget: string }
+          - { label: 文件名, name: file, widget: string }
+

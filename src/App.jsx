@@ -1,172 +1,265 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { documentAsset, portfolioAsset, projectById, projects } from './content/index.js';
 
-const asset = (name) => `./assets/portfolio/${name}`;
-
-const projects = [
-  {
-    number: '01', category: 'AIGC 微短剧', title: '《一灯渡众生》', role: '导演 · 生成统筹 · 剪辑后期',
-    description: '将传统文化题材拆解为 54 个可执行镜头，以参考图、首尾帧和提示词约束角色、服饰、空间与核心道具，完成 3 分 23 秒 AIGC 成片。',
-    video: asset('lantern-preview.mp4'), poster: asset('lantern-poster.webp'), stats: ['54 SHOTS', '03:23 FILM'],
-    details: ['盛唐长安东方绘本视觉规范', '镜号化生成与连续性控制', '字幕、声音与成片校对'],
-    gallery: [asset('process-scenes.webp'), asset('process-monk.webp'), asset('process-girl.webp'), asset('process-mother.webp')],
-  },
-  {
-    number: '02', category: '文创产品与数字体验', title: '《一叶生长》', role: '品牌概念 · 视觉统筹 · 跨媒介体验',
-    description: '从雅安茶文化提炼“一叶、一液、一业、一夜”的品牌表达，覆盖茶罐、明信片、雨伞、香器、礼盒及沉浸式 VR 数字体验。',
-    video: asset('tea-vr-preview.mp4'), poster: asset('tea-01.webp'), stats: ['06 DELIVERABLES', 'VR EXPERIENCE'],
-    details: ['叶脉与自然要素主视觉', '实体文创与移动内容联动', '产品、展板与数字体验整合'],
-    gallery: [asset('tea-01.webp'), asset('tea-02.webp'), asset('tea-03.webp'), asset('tea-04.webp'), asset('tea-05.webp'), asset('tea-06.webp')],
-  },
-  {
-    number: '03', category: '真人剧情短片', title: '《慢度朝夕》', role: '导演 · 编剧 · 摄影 · 后期',
-    description: '以冷暖色调和节奏变化呈现人物从高压内耗到重新参与生活的转折，完成剧本修改、分镜协调、现场拍摄与 5 分 12 秒成片交付。',
-    video: asset('slow-life-preview.mp4'), poster: asset('slow-life-poster.webp'), stats: ['05:12 FILM', 'LIVE ACTION'],
-    details: ['人物情绪与镜头节奏设计', '校园空间中的现场调度', '素材筛选、字幕与声音处理'],
-    gallery: [asset('slow-life-poster.webp'), asset('photo-01.webp'), asset('photo-04.webp')],
-  },
-  {
-    number: '04', category: '城市文化视觉系统', title: '成都文化视觉转译', role: '文化调研 · 图形设计 · 系列海报',
-    description: '从五处成都文化地标提炼建筑、文物与地域符号，统一构图、字体、色彩和版式规范，形成具有系列感与辨识度的海报方案。',
-    poster: asset('chengdu-wuhou.webp'), stats: ['05 POSTERS', 'ACP ENTRY'],
-    details: ['五处文化地标信息梳理', '历史元素的现代图形转译', '统一系统下保留场所差异'],
-    gallery: [asset('chengdu-panda.webp'), asset('chengdu-kuanzhai.webp'), asset('chengdu-dufu.webp'), asset('chengdu-wuhou.webp'), asset('chengdu-jinsha.webp')],
-  },
+const arrow = <span aria-hidden="true">↗</span>;
+const homeSections = [
+  ['profile', '个人简介'],
+  ['method', '工作方法'],
+  ['projects', '项目档案'],
+  ['archive', '工作留痕'],
+  ['contact', '联系'],
 ];
 
-const strengths = [
-  ['01', '导演与分镜', '把文本拆成行动、情绪、景别和镜头衔接，形成可执行的画面方案。'],
-  ['02', '生成连续性', '通过参考图、首尾帧、固定人物关系和空间参照，逐镜控制跳变与漂移。'],
-  ['03', '剪辑与交付', '从素材管理、镜头衔接到节奏、字幕、声音和成片校对，推进完整交付。'],
-  ['04', '视觉系统', '用统一色彩、图形和版式语言连接影像、海报、产品与数字体验。'],
-];
+const jumpTo = (target) => {
+  const root = document.documentElement;
+  const previous = root.style.scrollBehavior;
+  root.style.scrollBehavior = 'auto';
+  if (target === 'top') window.scrollTo(0, 0);
+  else document.getElementById(target)?.scrollIntoView();
+  window.requestAnimationFrame(() => { root.style.scrollBehavior = previous; });
+};
 
-const photographs = [
-  [asset('photo-01.webp'), '街巷与时间'], [asset('photo-02.webp'), '光线与日常物件'],
-  [asset('photo-03.webp'), '人物与空间关系'], [asset('photo-04.webp'), '城市中的停顿'],
-];
+const traceLabel = (index) => {
+  const labels = ['提示词与项目沟通', '角色与场景素材整理', 'Premiere 剪辑时间线', '角色设定与三视图', '生成反馈与版本确认', '剪辑与镜头组织'];
+  return labels[index % labels.length];
+};
 
-function Arrow() { return <span aria-hidden="true">↗</span>; }
-
-function Intro({ leaving, onEnter, onFinished }) {
-  return (
-    <section className={`intro-screen ${leaving ? 'is-leaving' : ''}`} onAnimationEnd={leaving ? onFinished : undefined}>
-      <video autoPlay muted loop playsInline poster={asset('lantern-poster.webp')}><source src={asset('lantern-preview.mp4')} type="video/mp4" /></video>
-      <div className="intro-shade" aria-hidden="true" /><div className="intro-grid" aria-hidden="true" />
-      <div className="intro-top"><span>GJX / PORTFOLIO</span><span>2026</span></div>
-      <div className="intro-copy"><p>AIGC VIDEO CREATOR · DIRECT / GENERATE / EDIT</p><h1>从一帧<br />进入一部作品</h1><button type="button" onClick={onEnter}><span>ENTER PORTFOLIO</span><Arrow /></button></div>
-      <div className="intro-bottom"><span>真实项目素材 / 响应式展示</span><span>点击进入 ↓</span></div>
-    </section>
-  );
-}
-
-function ProjectMedia({ project, controls = false }) {
-  if (project.video) {
-    return <video autoPlay={!controls} muted={!controls} loop={!controls} controls={controls} playsInline preload="metadata" poster={project.poster}><source src={project.video} type="video/mp4" /></video>;
-  }
-  return <img src={project.poster} alt={`${project.title}项目视觉`} />;
-}
-
-function ProjectModal({ project, onClose }) {
-  useEffect(() => {
-    const handleKey = (event) => event.key === 'Escape' && onClose();
-    window.addEventListener('keydown', handleKey);
-    return () => window.removeEventListener('keydown', handleKey);
-  }, [onClose]);
-
-  return (
-    <div className="project-modal" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
-      <button className="modal-backdrop" type="button" onClick={onClose} aria-label="关闭项目详情" />
-      <article className="modal-panel">
-        <button className="modal-close" type="button" onClick={onClose} aria-label="关闭项目详情">×</button>
-        <div className="modal-heading"><p>{project.number} / {project.category}</p><h2 id="project-modal-title">{project.title}</h2><span>{project.role}</span></div>
-        <div className="modal-media"><ProjectMedia project={project} controls /></div>
-        <div className="modal-summary"><p>{project.description}</p><ul>{project.details.map((detail) => <li key={detail}>{detail}</li>)}</ul></div>
-        <div className={`modal-gallery ${project.gallery.length > 4 ? 'is-dense' : ''}`}>{project.gallery.map((image, index) => <img src={image} alt={`${project.title}项目素材 ${index + 1}`} key={image} loading="lazy" />)}</div>
-      </article>
-    </div>
-  );
-}
-
-function Portfolio() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [activeProject, setActiveProject] = useState(null);
+function useLocationProject() {
+  const getId = () => new URLSearchParams(window.location.search).get('project');
+  const [projectId, setProjectId] = useState(getId);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    handleScroll(); window.addEventListener('scroll', handleScroll, { passive: true });
-    const observer = new IntersectionObserver((entries) => entries.forEach((entry) => entry.isIntersecting && entry.target.classList.add('is-visible')), { threshold: 0.1 });
-    document.querySelectorAll('[data-reveal]').forEach((element) => observer.observe(element));
-    return () => { window.removeEventListener('scroll', handleScroll); observer.disconnect(); };
+    const update = () => setProjectId(getId());
+    window.addEventListener('popstate', update);
+    return () => window.removeEventListener('popstate', update);
   }, []);
 
-  useEffect(() => {
-    document.body.classList.toggle('menu-lock', menuOpen || Boolean(activeProject));
-    return () => document.body.classList.remove('menu-lock');
-  }, [menuOpen, activeProject]);
+  const openProject = (id, replace = false) => {
+    const url = new URL(window.location.href);
+    url.searchParams.set('project', id);
+    url.hash = '';
+    window.history[replace ? 'replaceState' : 'pushState']({}, '', url);
+    setProjectId(id);
+    window.setTimeout(() => jumpTo('top'), 60);
+  };
 
-  const closeMenu = () => setMenuOpen(false);
+  const openHome = (section = 'top') => {
+    const url = new URL(window.location.href);
+    url.searchParams.delete('project');
+    url.hash = section === 'top' ? '' : section;
+    window.history.pushState({}, '', url);
+    setProjectId(null);
+    window.setTimeout(() => jumpTo(section), 60);
+  };
+
+  return { projectId, openProject, openHome };
+}
+
+function Header({ projectId, onOpenProject, onHome }) {
+  const [query, setQuery] = useState('');
+  const [status, setStatus] = useState('');
+  const [menuOpen, setMenuOpen] = useState(false);
+  const results = useMemo(() => {
+    const value = query.trim().toLowerCase();
+    if (!value) return [];
+    return projects.filter((project) => JSON.stringify(project).toLowerCase().includes(value)).slice(0, 5);
+  }, [query]);
+
+  const goTo = (section) => {
+    setMenuOpen(false);
+    if (projectId) onHome(section);
+    else document.getElementById(section)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const submit = (event) => {
+    event.preventDefault();
+    if (results[0]) {
+      onOpenProject(results[0].id);
+      setStatus(`已打开：${results[0].shortTitle}`);
+      setQuery('');
+      return;
+    }
+    const keyword = query.trim();
+    if (!keyword) setStatus('输入项目、流程或能力关键词');
+    else setStatus('暂无匹配，试试“一灯”“导演”或“摄影”');
+  };
 
   return (
-    <>
-      <a className="skip-link" href="#main">跳到主要内容</a>
-      <header className={`site-header ${scrolled ? 'is-scrolled' : ''}`}>
-        <a className="brand" href="#top" onClick={closeMenu} aria-label="返回首页"><span>GJX</span><i aria-hidden="true" /></a>
-        <nav className={menuOpen ? 'is-open' : ''} aria-label="主要导航"><a href="#profile" onClick={closeMenu}>经历</a><a href="#projects" onClick={closeMenu}>项目</a><a href="#strengths" onClick={closeMenu}>优势</a><a href="#contact" onClick={closeMenu}>联系</a></nav>
-        <a className="header-contact" href="mailto:13648187093@163.com">LET'S TALK <Arrow /></a>
-        <button className={`menu-button ${menuOpen ? 'is-open' : ''}`} type="button" aria-expanded={menuOpen} aria-label={menuOpen ? '关闭导航' : '打开导航'} onClick={() => setMenuOpen((value) => !value)}><i /><i /></button>
-      </header>
-
-      <main id="main">
-        <section id="top" className="hero">
-          <video className="hero-video" autoPlay muted loop playsInline poster={asset('lantern-poster.webp')}><source src={asset('lantern-preview.mp4')} type="video/mp4" /></video>
-          <div className="hero-shade" aria-hidden="true" /><div className="hero-grid" aria-hidden="true" /><div className="hero-orbit" aria-hidden="true"><i /><i /><i /></div>
-          <div className="hero-content page-shell"><p className="kicker" data-reveal><span>AVAILABLE FOR INTERNSHIP</span> / 2026</p><h1 data-reveal><span>AIGC</span><span>视频创作</span><em>实习生</em></h1><div className="hero-bottom" data-reveal><p>从脚本、视觉设定与镜头生成，到真人拍摄、剪辑合成和最终交付。</p><a className="circle-link" href="#projects" aria-label="查看精选项目"><span>VIEW<br />WORK</span><Arrow /></a></div></div>
-          <div className="hero-side" aria-hidden="true"><span>DIRECT</span><span>GENERATE</span><span>EDIT</span></div><p className="hero-scroll">SCROLL TO EXPLORE <span>↓</span></p>
-        </section>
-
-        <section id="profile" className="profile section-space"><div className="page-shell">
-          <header className="section-header" data-reveal><p className="section-label">01 / PROFILE</p><h2>不只生成画面，<br />也负责让画面成立。</h2></header>
-          <div className="profile-layout"><div className="portrait-card" data-reveal><img src="./assets/guo-jiaxin.jpg" alt="郭佳鑫肖像" /><span className="portrait-code">GJX / PORTFOLIO</span><span className="portrait-role">AIGC VIDEO CREATOR</span></div>
-          <div className="profile-copy" data-reveal><p className="profile-intro">郭佳鑫，成都美术学院数字媒体艺术本科在读，综合排名年级第四。关注 AIGC 影像从创意拆解、视觉设定到成片交付的完整链路，也具备真人短片拍摄、校园宣发与文旅视觉设计经验。</p>
-          <dl className="profile-meta"><div><dt>EDUCATION</dt><dd>成都美术学院<br />数字媒体艺术 · 本科</dd></div><div><dt>FOCUS</dt><dd>AIGC 视频创作<br />导演与剪辑后期</dd></div><div><dt>CONTACT</dt><dd><a href="mailto:13648187093@163.com">13648187093@163.com</a><br />成都</dd></div></dl>
-          <div className="profile-stats" aria-label="项目数据"><div><strong>54</strong><span>镜头叙事拆解</span></div><div><strong>03:23</strong><span>AIGC 成片</span></div><div><strong>80</strong><span>镜头拉片分析</span></div></div></div></div>
-        </div></section>
-
-        <section id="projects" className="projects section-space"><div className="page-shell">
-          <header className="section-header project-heading" data-reveal><p className="section-label">02 / SELECTED PROJECTS</p><h2>精选项目</h2><p>这里展示真实成片与设计素材。点击卡片可查看项目说明、视频预览和过程图。</p></header>
-          <div className="project-list">{projects.map((project) => <article className="project-card" key={project.number} data-reveal>
-            <button className="project-image" type="button" onClick={() => setActiveProject(project)} aria-label={`查看${project.title}项目详情`}><ProjectMedia project={project} /><span>VIEW CASE <Arrow /></span></button>
-            <div className="project-info"><div className="project-topline"><span>{project.number}</span><span>{project.category}</span></div><h3>{project.title}</h3><p className="project-role">{project.role}</p><p>{project.description}</p><div className="project-stats">{project.stats.map((stat) => <span key={stat}>{stat}</span>)}</div><button className="case-button" type="button" onClick={() => setActiveProject(project)}>展开案例 <Arrow /></button></div>
-          </article>)}</div>
-        </div></section>
-
-        <section className="photography section-space" aria-labelledby="photo-title"><div className="page-shell">
-          <header className="section-header project-heading" data-reveal><p className="section-label">03 / VISUAL OBSERVATION</p><h2 id="photo-title">影像观察</h2><p>通过街巷、人物、光线与日常物件，训练对构图、节奏和真实情绪的判断。</p></header>
-          <div className="photo-grid">{photographs.map(([image, caption], index) => <figure key={image} data-reveal><img src={image} alt={caption} loading="lazy" /><figcaption><span>0{index + 1}</span>{caption}</figcaption></figure>)}</div>
-        </div></section>
-
-        <section id="strengths" className="strengths section-space"><div className="page-shell">
-          <header className="section-header" data-reveal><p className="section-label">04 / STRENGTHS</p><h2>一套可推进、<br />可复用的创作方法。</h2></header>
-          <div className="strength-grid">{strengths.map(([number, title, copy]) => <article key={number} data-reveal><span>{number}</span><div className="strength-icon" aria-hidden="true"><i /><i /></div><h3>{title}</h3><p>{copy}</p></article>)}</div>
-          <div className="tool-line" data-reveal><span>TOOLS</span><p>ChatGPT · Codex · 即梦 · Workbody Cloud · Photoshop · Illustrator · 剪映</p></div>
-        </div></section>
-
-        <section id="contact" className="contact"><div className="contact-grid" aria-hidden="true" /><div className="contact-glow" aria-hidden="true" /><div className="page-shell contact-content">
-          <p className="section-label" data-reveal>05 / CONTACT</p><p className="contact-eyebrow" data-reveal>AIGC VIDEO CREATION INTERNSHIP</p><h2 data-reveal>让下一个故事<br />从一帧开始。</h2><a className="contact-email" href="mailto:13648187093@163.com" data-reveal><span>13648187093@163.com</span><Arrow /></a><div className="contact-footer"><span>GUO JIAXIN © {new Date().getFullYear()}</span><span>CHENGDU / CHINA</span><a href="#top">BACK TO TOP ↑</a></div>
-        </div></section>
-      </main>
-      {activeProject && <ProjectModal project={activeProject} onClose={() => setActiveProject(null)} />}
-    </>
+    <header className="site-header">
+      <div className="header-main page-shell">
+        <button className="brand" type="button" onClick={() => onHome('top')} aria-label="返回作品集首页">
+          <b>GJX</b><i /><span>AIGC VIDEO CREATOR</span>
+        </button>
+        <nav className={menuOpen ? 'is-open' : ''} aria-label="主要导航">
+          {homeSections.map(([id, label]) => <button type="button" onClick={() => goTo(id)} key={id}>{label}</button>)}
+        </nav>
+        <a className="header-contact" href="mailto:13648187093@163.com">LET'S TALK {arrow}</a>
+        <button className="menu-toggle" type="button" aria-label="打开导航" aria-expanded={menuOpen} onClick={() => setMenuOpen((value) => !value)}><i /><i /></button>
+      </div>
+      <form className="fixed-search" role="search" onSubmit={submit}>
+        <div className="page-shell search-inner">
+          <label htmlFor="portfolio-search">SEARCH / 全站检索</label>
+          <input id="portfolio-search" value={query} onChange={(event) => { setQuery(event.target.value); setStatus(''); }} placeholder="搜索项目、能力、流程或素材…" autoComplete="off" />
+          <button type="submit">定位 <span>→</span></button>
+          <small aria-live="polite">{status}</small>
+          {query && results.length > 0 && (
+            <div className="search-results">
+              {results.map((result) => (
+                <button type="button" key={result.id} onClick={() => { onOpenProject(result.id); setQuery(''); }}>
+                  <span>{result.number}</span><b>{result.shortTitle}</b><em>{result.category}</em>
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      </form>
+    </header>
   );
 }
 
-function App() {
-  const [entered, setEntered] = useState(false);
-  const [leaving, setLeaving] = useState(false);
-  useEffect(() => { document.body.classList.toggle('intro-lock', !entered); return () => document.body.classList.remove('intro-lock'); }, [entered]);
-  if (!entered) return <Intro leaving={leaving} onEnter={() => setLeaving(true)} onFinished={() => setEntered(true)} />;
-  return <Portfolio />;
+function ProjectVisual({ project, mode = 'cover', controls = false }) {
+  const video = project.video?.[mode === 'full' ? 'full' : 'preview'];
+  if (video) {
+    return (
+      <video key={`${project.id}-${mode}`} src={portfolioAsset(video)} poster={portfolioAsset(project.poster)} controls={controls} autoPlay={!controls} muted={!controls} loop={!controls} playsInline preload={controls ? 'metadata' : 'none'} />
+    );
+  }
+  return <img src={portfolioAsset(project.poster)} alt={`${project.title}主视觉`} />;
 }
 
-export default App;
+function SectionTitle({ index, kicker, children, light = false }) {
+  return <header className={`section-title ${light ? 'is-light' : ''}`}><p><span>{index}</span>{kicker}</p><h2>{children}</h2></header>;
+}
+
+function Home({ onOpenProject }) {
+  const [wordIndex, setWordIndex] = useState(0);
+  const [methodStep, setMethodStep] = useState(0);
+  const lantern = projectById.lantern;
+  const words = ['导演情绪', '生成世界', '剪辑节奏'];
+
+  useEffect(() => {
+    const timer = window.setInterval(() => setWordIndex((value) => (value + 1) % words.length), 2300);
+    return () => window.clearInterval(timer);
+  }, []);
+
+  return (
+    <main>
+      <section id="top" className="home-hero">
+        <div className="hero-grid" aria-hidden="true" />
+        <div className="page-shell hero-layout">
+          <div className="hero-copy">
+            <p className="overline">AIGC VIDEO CREATOR / AVAILABLE FOR INTERNSHIP</p>
+            <h1>我用影像</h1>
+            <div className="kinetic-words">{words.map((word, index) => <span className={index === wordIndex ? 'active' : ''} key={word}>{word}</span>)}</div>
+            <h2>让画面成立。</h2>
+            <div className="hero-cta"><button type="button" onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>查看完整项目 <span>→</span></button><p>从脚本、视觉设定与镜头生成，到真人拍摄、剪辑合成和最终交付。</p></div>
+          </div>
+          <button className="hero-feature" type="button" onClick={() => onOpenProject('lantern')}>
+            <ProjectVisual project={lantern} /><span className="media-shade" /><span className="hero-feature-meta"><i>CORE CASE / 01</i><b>一灯渡众生</b><small>54 SHOTS · 03:23 FULL FILM</small></span><span className="round-arrow">↗</span>
+          </button>
+        </div>
+        <p className="scroll-cue">SCROLL TO EXPLORE <span>↓</span></p>
+      </section>
+
+      <div className="dual-ticker" aria-hidden="true"><div><span>DIRECT / GENERATE / EDIT / DELIVER / DIRECT / GENERATE / EDIT / DELIVER /</span></div><div><span>构思 / 生成 / 剪辑 / 交付 / 构思 / 生成 / 剪辑 / 交付 /</span></div></div>
+
+      <section id="profile" className="section-pad profile-section"><div className="page-shell">
+        <SectionTitle index="01" kicker="PROFILE">不只生成画面，<br />也建立画面的规则。</SectionTitle>
+        <div className="profile-panel">
+          <figure><img src="./assets/guo-jiaxin.jpg" alt="郭佳鑫个人肖像" /><figcaption><span>GUO JIAXIN</span><span>CHENGDU / CHINA</span></figcaption></figure>
+          <article><p>我是郭佳鑫，目标岗位为 <strong>AIGC 视频创作实习生</strong>。我关注的不是单次生成，而是如何把脚本、角色、场景、镜头、声音和剪辑组织成可以复核、可以完善、可以交付的完整流程。</p><dl><div><dt>POSITION</dt><dd>AIGC 视频创作</dd></div><div><dt>EDUCATION</dt><dd>本科 / 视觉设计方向</dd></div><div><dt>FOCUS</dt><dd>导演 · 生成 · 剪辑</dd></div></dl><div className="profile-numbers"><span><b>03</b><small>完整影像项目</small></span><span><b>54</b><small>AIGC 镜头设计</small></span><span><b>06</b><small>当前项目档案</small></span></div><a href={documentAsset('guo-jiaxin-resume.pdf')} target="_blank" rel="noreferrer">查看完整简历 {arrow}</a></article>
+        </div>
+      </div></section>
+
+      <section id="method" className="section-pad method-section"><div className="page-shell">
+        <SectionTitle index="02" kicker="CONTROLLED WORKFLOW" light>把“生成”，变成<br />可控的工作流程。</SectionTitle>
+        <div className="method-layout">
+          <div className="method-map"><svg viewBox="0 0 900 520" aria-hidden="true"><path d="M120 320 C220 80 380 110 445 255 S700 450 790 145"/><path d="M120 320 C300 430 520 455 790 145"/></svg>{lantern.process.map((step, index) => <button className={`method-node node-${index + 1} ${methodStep === index ? 'active' : ''}`} type="button" onClick={() => setMethodStep(index)} key={step.number}><span>{step.number}</span><b>{step.title}</b><small>{step.summary}</small></button>)}</div>
+          <article className="method-detail"><p>STEP {lantern.process[methodStep].number} / CLICKABLE PROCESS</p><h3>{lantern.process[methodStep].title}</h3><strong>如何完善</strong><blockquote>{lantern.process[methodStep].improvement}</blockquote><div className="method-evidence">{lantern.process[methodStep].evidence.slice(0, 3).map((image) => <img src={portfolioAsset(image)} alt="对应流程的工作证据" key={image} />)}</div><button type="button" onClick={() => onOpenProject('lantern')}>进入项目查看完整流程 {arrow}</button></article>
+        </div>
+      </div></section>
+
+      <section id="projects" className="section-pad projects-section"><div className="page-shell">
+        <SectionTitle index="03" kicker="SELECTED CASES" light>每个项目，<br />都是一条完整证据链。</SectionTitle>
+        <div className="project-grid">{projects.map((project, index) => <button className={`project-card project-card-${index + 1}`} type="button" onClick={() => onOpenProject(project.id)} key={project.id}><span className="card-image"><img src={portfolioAsset(project.cover)} alt={`${project.title}项目封面`} loading="lazy" /><i /></span><span className="card-copy"><small>{project.number} / {project.category}</small><b>{project.title}</b><em>{project.role}</em><span>{project.tagline}</span></span><span className="card-arrow">↗</span></button>)}</div>
+      </div></section>
+
+      <section id="archive" className="section-pad archive-section"><div className="page-shell">
+        <SectionTitle index="04" kicker="WORKING ARCHIVE">作品之外，<br />保留每一次判断。</SectionTitle>
+        <div className="archive-intro"><p>26 份提示词、角色设定、生成反馈、剪辑时间线和声音记录，不再藏在文件夹里。它们被放回对应流程，用来说明作品如何一步步被完善。</p><button type="button" onClick={() => onOpenProject('lantern')}>打开完整留痕专区 {arrow}</button></div>
+        <div className="archive-strip">{lantern.traceFiles.slice(0, 10).map((file, index) => <figure key={file}><img src={portfolioAsset(`traces/${file}`)} alt={traceLabel(index)} loading="lazy" /><figcaption><span>{String(index + 1).padStart(2, '0')}</span>{traceLabel(index)}</figcaption></figure>)}</div>
+      </div></section>
+
+      <section id="contact" className="contact-section"><img src={portfolioAsset('tea-01.webp')} alt="" /><div className="contact-shade" /><div className="page-shell contact-inner"><p>05 / CONTACT</p><h2>下一次，<br />一起让画面成立。</h2><a href="mailto:13648187093@163.com"><span>13648187093@163.com</span>{arrow}</a><footer><span>GUO JIAXIN © 2026</span><span>AIGC VIDEO / VISUAL DESIGN / EDITING</span></footer></div></section>
+    </main>
+  );
+}
+
+function AbilityGrid({ project }) {
+  return <div className="ability-grid">{project.abilities.map((ability, index) => <article key={ability.title}><span>{String(index + 1).padStart(2, '0')}</span><h3>{ability.title}</h3><p>{ability.copy}</p></article>)}</div>;
+}
+
+function Lightbox({ image, onClose }) {
+  useEffect(() => {
+    const key = (event) => event.key === 'Escape' && onClose();
+    window.addEventListener('keydown', key);
+    return () => window.removeEventListener('keydown', key);
+  }, [onClose]);
+  if (!image) return null;
+  return <div className="lightbox" role="dialog" aria-modal="true"><button type="button" className="lightbox-shade" onClick={onClose} aria-label="关闭大图" /><button type="button" className="lightbox-close" onClick={onClose}>关闭 ×</button><img src={image} alt="作品素材大图" /></div>;
+}
+
+function ProjectCase({ project, onOpenProject, onHome }) {
+  const [stepIndex, setStepIndex] = useState(0);
+  const [lightbox, setLightbox] = useState(null);
+  const [archiveTab, setArchiveTab] = useState('trace');
+  useEffect(() => { setStepIndex(0); setArchiveTab('trace'); }, [project.id]);
+  const step = project.process[stepIndex];
+  const nextProject = projects[(projects.findIndex((item) => item.id === project.id) + 1) % projects.length];
+  const frames = project.frameCount ? Array.from({ length: project.frameCount }, (_, index) => `lantern-frames/shot-${String(index + 1).padStart(2, '0')}.jpg`) : [];
+  const hasArchive = Boolean(project.traceFiles || project.frameCount || project.workArchive);
+  const openImage = (path) => setLightbox(portfolioAsset(path));
+
+  return (
+    <main className={`case-page case-${project.id}`}>
+      <section id="case-top" className="case-hero"><div className="case-hero-media"><img src={portfolioAsset(project.poster)} alt={`${project.title}项目主海报`} /><span /></div><div className="page-shell case-hero-copy"><button type="button" onClick={() => onHome('projects')}>← 返回项目档案</button><p>{project.number} / {project.category} / {project.year}</p><h1>{project.title}</h1><h2>{project.tagline}</h2><div><span>{project.role}</span>{project.stats.map((stat) => <b key={stat}>{stat}</b>)}</div></div></section>
+
+      <div className="page-shell case-shell">
+        <div className="case-main">
+          <section id="overview" className="case-section case-overview"><p className="case-kicker">01 / PROJECT OVERVIEW</p><h2>{project.description}</h2><div className="project-facts">{project.stats.map((stat, index) => <span key={stat}><small>{String(index + 1).padStart(2, '0')}</small><b>{stat}</b></span>)}</div></section>
+
+          <section id="abilities" className="case-section"><p className="case-kicker">02 / PERSONAL CAPABILITY</p><header className="case-heading"><h2>在流程之前，先说明<br />我为项目带来了什么。</h2><p>个人能力不是工具清单，而是面对问题时采用的判断与方法。</p></header><AbilityGrid project={project} /></section>
+
+          {project.video && <section id="film" className="case-section film-section"><p className="case-kicker">03 / {project.video.label.toUpperCase()}</p><header className="case-heading"><h2>{project.video.label}</h2><p>时长 {project.video.duration}。这里播放的是完整作品，浏览器可直接查看。</p></header><div className="full-film"><ProjectVisual project={project} mode="full" controls /><span>FULL FILM / {project.video.duration}</span></div>{project.id === 'slow-life' && <details className="trailer-panel"><summary>补充查看 00:28 片花（非正片）</summary><video key="slow-life-trailer" src={portfolioAsset(project.video.preview)} controls playsInline preload="metadata" poster={portfolioAsset(project.poster)} /></details>}</section>}
+
+          <section id="workflow" className="case-section workflow-section"><p className="case-kicker">{project.video ? '04' : '03'} / COMPLETE WORKFLOW</p><header className="case-heading"><h2>从问题到交付，<br />完整说明如何完善。</h2><p>点击每一步，查看具体改进、交付物与对应证据。</p></header><div className="workflow-tabs">{project.process.map((item, index) => <button type="button" className={index === stepIndex ? 'active' : ''} onClick={() => setStepIndex(index)} key={item.number}><span>{item.number}</span><b>{item.title}</b></button>)}</div><article className="workflow-detail"><div className="workflow-copy"><p>STEP {step.number}</p><h3>{step.title}</h3><strong>{step.summary}</strong><h4>这一步如何完善作品</h4><blockquote>{step.improvement}</blockquote><h4>阶段交付</h4><ul>{step.deliverables.map((item) => <li key={item}>{item}</li>)}</ul></div><div className="workflow-media">{step.evidence.map((image, index) => <button type="button" onClick={() => openImage(image)} key={`${image}-${index}`}><img src={portfolioAsset(image)} alt={`${step.title}流程证据 ${index + 1}`} loading="lazy" /><span>证据 {String(index + 1).padStart(2, '0')} ↗</span></button>)}</div></article></section>
+
+          <section id="gallery" className="case-section gallery-section"><p className="case-kicker">{project.video ? '05' : '04'} / RESULT GALLERY</p><header className="case-heading"><h2>最终作品与延展成果</h2><p>点击任意图片查看完整尺寸。</p></header><div className={`result-gallery count-${project.gallery.length}`}>{project.gallery.map((image, index) => <button type="button" onClick={() => openImage(image)} key={`${image}-${index}`}><img src={portfolioAsset(image)} alt={`${project.title}成果 ${index + 1}`} loading="lazy" /><span>{String(index + 1).padStart(2, '0')}</span></button>)}</div></section>
+
+          {hasArchive && <section id="evidence" className="case-section evidence-section">
+            <p className="case-kicker">06 / WORKING ARCHIVE</p>
+            <header className="case-heading"><h2>{project.workArchive?.title || '工作留痕与逐镜档案'}</h2><p>{project.workArchive?.description || '不是装饰图集，而是从设定、生成到剪辑的过程证据。'}</p></header>
+            {project.traceFiles ? <>
+              <div className="archive-tabs"><button type="button" className={archiveTab === 'trace' ? 'active' : ''} onClick={() => setArchiveTab('trace')}>26 份工作留痕</button><button type="button" className={archiveTab === 'frames' ? 'active' : ''} onClick={() => setArchiveTab('frames')}>54 张逐镜画面</button></div>
+              {archiveTab === 'trace' ? <div className="evidence-grid">{project.traceFiles.map((file, index) => <button type="button" onClick={() => openImage(`traces/${file}`)} key={file}><img src={portfolioAsset(`traces/${file}`)} alt={traceLabel(index)} loading="lazy" /><span>{String(index + 1).padStart(2, '0')} / {traceLabel(index)}</span></button>)}</div> : <div className="frame-grid">{frames.map((frame, index) => <button type="button" onClick={() => openImage(frame)} key={frame}><img src={portfolioAsset(frame)} alt={`第 ${index + 1} 镜画面`} loading="lazy" /><span>SHOT {String(index + 1).padStart(2, '0')}</span></button>)}</div>}
+            </> : <div className="evidence-grid">{project.workArchive.files.map((item, index) => <button type="button" onClick={() => openImage(item.file)} key={item.file}><img src={portfolioAsset(item.file)} alt={item.label} loading="lazy" /><span>{String(index + 1).padStart(2, '0')} / {item.label}</span></button>)}</div>}
+          </section>}
+
+          {project.downloads?.length > 0 && <section id="documents" className="case-section documents-section"><p className="case-kicker">DOCUMENTS / SOURCE FILES</p><h2>可下载项目文档</h2><div>{project.downloads.map((download) => <a href={documentAsset(download.file)} target="_blank" rel="noreferrer" key={download.file}><span>{download.label}</span>{arrow}</a>)}</div></section>}
+
+          <section className="next-case"><p>NEXT PROJECT</p><button type="button" onClick={() => onOpenProject(nextProject.id)}><span>{nextProject.number} / {nextProject.category}</span><b>{nextProject.title}</b>{arrow}</button></section>
+        </div>
+
+        <aside className="case-rail"><div className="rail-inner"><p>PROJECT INDEX / {project.number}</p><nav aria-label="项目页分区"><a href="#overview">项目介绍</a><a href="#abilities">个人能力</a>{project.video && <a href="#film">完整成片</a>}<a href="#workflow">完整流程</a><a href="#gallery">成果展示</a>{hasArchive && <a href="#evidence">工作留痕</a>}{project.downloads?.length > 0 && <a href="#documents">项目文档</a>}</nav><section><h3>简历中的项目说明</h3><ol>{project.resumeNotes.map((note) => <li key={note}>{note}</li>)}</ol></section><section className="rail-analysis"><h3>项目解析与补充</h3><p>{project.analysis}</p></section><section><h3>职责</h3><p>{project.role}</p></section></div></aside>
+      </div>
+      <Lightbox image={lightbox} onClose={() => setLightbox(null)} />
+    </main>
+  );
+}
+
+export default function App() {
+  const { projectId, openProject, openHome } = useLocationProject();
+  const project = projectById[projectId];
+  useEffect(() => { document.title = project ? `${project.shortTitle}｜郭佳鑫作品集` : '郭佳鑫｜AIGC 视频创作实习生'; }, [project]);
+  return <><a className="skip-link" href="#overview">跳到主要内容</a><Header projectId={project?.id} onOpenProject={openProject} onHome={openHome} />{project ? <ProjectCase project={project} onOpenProject={openProject} onHome={openHome} /> : <Home onOpenProject={openProject} />}</>;
+}

@@ -1,0 +1,33 @@
+{
+  "id": "red-lantern",
+  "order": 6,
+  "number": "06",
+  "category": "电影拉片研究",
+  "title": "《大红灯笼高高挂》镜头分析",
+  "shortTitle": "大红灯笼高高挂拉片",
+  "year": "研究档案",
+  "role": "镜头拆解 / 视听分析 / 方法沉淀",
+  "tagline": "把“好看”拆成可以复用的镜头判断。",
+  "description": "以经典影片为对象进行镜头分析，记录景别、构图、调度、色彩、声音与叙事功能。拉片研究用于反向训练导演和剪辑判断，并为后续 AIGC 分镜提供视听语言参考。",
+  "poster": "red-lantern-study.svg",
+  "cover": "red-lantern-study.svg",
+  "stats": ["电影拉片", "镜头语言", "色彩与调度", "方法档案"],
+  "resumeNotes": ["完成约 80 个镜头的影片分析，关注构图、色彩、声音与叙事功能。", "将拉片结论迁移到个人短片的分镜、节奏和视觉控制中。"],
+  "analysis": "拉片展示的是创作前的判断训练。通过逐镜说明“为什么这样拍”，可以把审美感受转成可执行规则；这也是从参考影片到原创分镜之间最重要的中间层。",
+  "abilities": [
+    {"title": "镜头阅读", "copy": "识别景别、角度、运动与调度如何共同传递人物关系。"},
+    {"title": "色彩分析", "copy": "观察红色、阴影与空间秩序如何参与情绪和权力表达。"},
+    {"title": "节奏判断", "copy": "通过镜头时长、动作节点和声音关系理解剪辑节奏。"},
+    {"title": "方法迁移", "copy": "将分析结果转成分镜、提示词和现场拍摄可直接使用的规则。"}
+  ],
+  "process": [
+    {"number": "01", "title": "建立记录维度", "summary": "先定义景别、构图、运动、色彩、声音和叙事功能。", "improvement": "用固定维度避免拉片停留在主观感受，让不同镜头可以横向比较。", "deliverables": ["分析字段", "记录模板"], "evidence": ["red-lantern-study.svg"]},
+    {"number": "02", "title": "逐镜观看与标注", "summary": "按镜头边界记录画面和声音变化。", "improvement": "重复观看动作起止与切点，补充空间方向、人物位置和色彩变化，建立完整观察链。", "deliverables": ["逐镜记录", "视听标注"], "evidence": ["red-lantern-study.svg"]},
+    {"number": "03", "title": "归纳可复用规律", "summary": "从个别镜头中提炼导演与剪辑方法。", "improvement": "把构图、调度与声音作用总结为可执行原则，并迁移到个人项目的分镜与节奏设计。", "deliverables": ["方法总结", "完整拉片文档"], "evidence": ["red-lantern-study.svg"]}
+  ],
+  "gallery": ["red-lantern-study.svg"],
+  "downloads": [
+    {"label": "下载完整拉片分析", "file": "red-lantern-shot-analysis.doc"}
+  ]
+}
+

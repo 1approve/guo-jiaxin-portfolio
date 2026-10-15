@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">大红灯笼高高挂镜头分析</title>
+  <desc id="desc">黑红色的电影研究视觉封面</desc>
+  <defs>
+    <radialGradient id="glow"><stop stop-color="#ff3a20"/><stop offset="1" stop-color="#6e0903"/></radialGradient>
+    <pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse"><path d="M44 0H0V44" fill="none" stroke="#fff" stroke-opacity=".06"/></pattern>
+  </defs>
+  <rect width="1600" height="1000" fill="#090807"/>
+  <rect width="1600" height="1000" fill="url(#grid)"/>
+  <circle cx="1120" cy="460" r="265" fill="url(#glow)" opacity=".85"/>
+  <path d="M810 210h620M810 710h620" stroke="#d8d3c9" stroke-opacity=".35"/>
+  <g fill="#f2eee5">
+    <text x="100" y="170" font-family="Arial, sans-serif" font-size="30" letter-spacing="8">SHOT ANALYSIS / VISUAL STUDY</text>
+    <text x="100" y="400" font-family="serif" font-size="116">大红灯笼</text>
+    <text x="100" y="535" font-family="serif" font-size="116">高高挂</text>
+    <text x="106" y="625" font-family="Arial, sans-serif" font-size="36" opacity=".62">镜头 · 构图 · 色彩 · 调度 · 声音</text>
+  </g>
+  <g fill="none" stroke="#f2eee5" stroke-opacity=".55" stroke-width="3">
+    <circle cx="1120" cy="460" r="165"/><circle cx="1120" cy="460" r="205"/>
+    <path d="M1120 245v430M905 460h430"/>
+  </g>
+  <text x="100" y="890" fill="#ff5b42" font-family="monospace" font-size="25" letter-spacing="5">RESEARCH ARCHIVE · GUO JIAXIN</text>
+</svg>
