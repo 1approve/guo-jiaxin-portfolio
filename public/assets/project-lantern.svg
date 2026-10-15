@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760">
+  <defs>
+    <radialGradient id="bg" cx="38%" cy="28%" r="76%"><stop stop-color="#8f432d"/><stop offset=".46" stop-color="#321720"/><stop offset="1" stop-color="#08090c"/></radialGradient>
+    <radialGradient id="lamp"><stop stop-color="#fff4b0"/><stop offset=".35" stop-color="#ff8b38"/><stop offset="1" stop-color="#9f202a"/></radialGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="24"/></filter>
+  </defs>
+  <rect width="1200" height="760" fill="url(#bg)"/>
+  <g opacity=".14" stroke="#fff"><path d="M0 80h1200M0 160h1200M0 240h1200M0 320h1200M0 400h1200M0 480h1200M0 560h1200M0 640h1200"/><path d="M100 0v760M200 0v760M300 0v760M400 0v760M500 0v760M600 0v760M700 0v760M800 0v760M900 0v760M1000 0v760M1100 0v760"/></g>
+  <circle cx="330" cy="250" r="110" fill="#ff7938" opacity=".42" filter="url(#glow)"/>
+  <rect x="268" y="180" width="124" height="150" rx="50" fill="url(#lamp)"/><path d="M280 170h100M280 340h100" stroke="#47141d" stroke-width="14"/>
+  <circle cx="820" cy="305" r="45" fill="#ff7d3d" opacity=".34" filter="url(#glow)"/><rect x="788" y="266" width="64" height="80" rx="28" fill="url(#lamp)" opacity=".84"/>
+  <path d="M0 660L130 572l95 42 150-115 148 120 134-86 154 97 146-113 143 89v154H0z" fill="#0b0b10"/>
+  <text x="72" y="104" fill="#ffece1" font-family="serif" font-size="72" letter-spacing="18">一灯渡众生</text>
+  <text x="76" y="700" fill="#c9ff32" font-family="sans-serif" font-size="18" letter-spacing="8">AI MICRO FILM / 54 SHOTS</text>
+</svg>

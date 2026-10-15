@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#152b23"/><stop offset="1" stop-color="#070b0a"/></linearGradient></defs>
+  <rect width="1200" height="760" fill="url(#g)"/>
+  <g fill="none" stroke="#c9ff32" stroke-width="2" opacity=".7">
+    <path d="M106 612C220 280 440 152 664 118C572 318 402 510 106 612Z"/><path d="M126 592L620 150"/>
+    <path d="M460 680C596 376 830 230 1080 256C930 448 742 596 460 680Z"/><path d="M500 656L1048 282"/>
+  </g>
+  <g stroke="#90a890" opacity=".35"><path d="M0 95h1200M0 190h1200M0 285h1200M0 380h1200M0 475h1200M0 570h1200M0 665h1200"/></g>
+  <text x="72" y="122" fill="#ecf3e7" font-family="sans-serif" font-weight="700" font-size="78">一叶生长</text>
+  <text x="76" y="700" fill="#c9ff32" font-family="sans-serif" font-size="18" letter-spacing="8">TEA CULTURE / BRAND SYSTEM</text>
+</svg>

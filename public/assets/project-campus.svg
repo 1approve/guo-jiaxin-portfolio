@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b8452d"/><stop offset=".55" stop-color="#46252b"/><stop offset="1" stop-color="#0c0c10"/></linearGradient></defs>
+  <rect width="1200" height="760" fill="url(#g)"/>
+  <g transform="translate(605 72) rotate(4)">
+    <rect width="490" height="160" fill="#0c0d10"/><rect x="16" y="16" width="458" height="128" fill="#c67262"/>
+    <rect y="184" width="490" height="160" fill="#0c0d10"/><rect x="16" y="200" width="458" height="128" fill="#75424b"/>
+    <rect y="368" width="490" height="160" fill="#0c0d10"/><rect x="16" y="384" width="458" height="128" fill="#d38b68"/>
+  </g>
+  <text x="72" y="130" fill="#ffe9df" font-family="sans-serif" font-weight="800" font-size="92">慢度朝夕</text>
+  <text x="74" y="218" fill="#ffbca7" font-family="serif" font-style="italic" font-size="42">campus / time / encounter</text>
+  <text x="76" y="700" fill="#c9ff32" font-family="sans-serif" font-size="18" letter-spacing="8">LIVE ACTION / DIRECT &amp; EDIT</text>
+</svg>
