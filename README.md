@@ -17,22 +17,23 @@ npm run dev
 npm run build
 ```
 
-## 发布到 GitHub Pages
+## 在线地址与发布
 
-1. 在 GitHub 新建公开仓库，例如 `guo-jiaxin-portfolio`。
-2. 将本目录推送到 `main` 分支。
-3. 在仓库 **Settings → Pages** 中将 Source 设为 **GitHub Actions**。
-4. `.github/workflows/deploy.yml` 会自动安装依赖、构建并发布 `dist`。
+- 公开网站：<https://guo-jiaxin-portfolio.netlify.app/>
+- 作品管理后台：<https://guo-jiaxin-portfolio.netlify.app/admin/>
+- GitHub 仓库：<https://github.com/1approve/guo-jiaxin-portfolio>
 
-## 内容维护
+后台通过 Netlify Identity 登录，并使用 Git Gateway 把修改写入 GitHub `main` 分支。每次保存或发布后，Netlify 会自动构建网站。
 
-- 个人与项目文案：编辑 `src/App.jsx`。
-- 色彩、排版和响应式样式：编辑 `src/styles.css`。
-- 头像：替换 `public/assets/guo-jiaxin.jpg`，保持同名即可。
-- 真实项目素材：位于 `public/assets/portfolio/`，包括 WebP 图片和网页预览版 MP4。
-- 项目顺序、说明、数据和画廊：编辑 `src/App.jsx` 顶部的 `projects` 数组。
-- 网站内视频已经压缩为网页预览版；原始高码率成片不纳入 GitHub 仓库。
+## 定制作品后台
+
+- 新增、删除、排序项目，设置草稿或发布状态。
+- 修改标题、年份、分类、职责、介绍、侧栏说明和项目解析。
+- 管理封面、海报、完整视频、片花、视频 Poster 与可选背景音乐。
+- 管理个人能力、完整流程、阶段交付、流程证据、画廊、工作留痕和下载文档。
+- 右侧实时预览；网络读取失败时使用构建内置数据兜底。
+- 上传文件暂限 25 MB，大体积正片继续使用已有仓库路径或后续接入对象存储。
 
 ## 隐私说明
 
-网站默认仅公开简历中的邮箱，没有公开电话、年龄、聊天截图、报名表，也没有把原始简历 PDF 或高码率成片放入仓库。
+后台采用仅邀请登录；公开网站与管理权限彼此分离。

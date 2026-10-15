@@ -119,7 +119,8 @@ function Header({ projectId, onOpenProject, onHome }) {
 
 function ProjectVisual({ project, mode = 'cover', controls = false }) {
   const video = project.video?.[mode === 'full' ? 'full' : 'preview'];
-  if (video) {
+  const preferImage = mode === 'cover' && project.heroMediaType === 'image';
+  if (video && !preferImage) {
     return (
       <video key={`${project.id}-${mode}`} src={portfolioAsset(video)} poster={portfolioAsset(project.poster)} controls={controls} autoPlay={!controls} muted={!controls} loop={!controls} playsInline preload={controls ? 'metadata' : 'none'} />
     );
@@ -222,7 +223,7 @@ function ProjectCase({ project, onOpenProject, onHome }) {
 
   return (
     <main className={`case-page case-${project.id}`}>
-      <section id="case-top" className="case-hero"><div className="case-hero-media"><img src={portfolioAsset(project.poster)} alt={`${project.title}项目主海报`} /><span /></div><div className="page-shell case-hero-copy"><button type="button" onClick={() => onHome('projects')}>← 返回项目档案</button><p>{project.number} / {project.category} / {project.year}</p><h1>{project.title}</h1><h2>{project.tagline}</h2><div><span>{project.role}</span>{project.stats.map((stat) => <b key={stat}>{stat}</b>)}</div></div></section>
+      <section id="case-top" className="case-hero"><div className="case-hero-media">{project.heroMediaType === 'video' && project.video?.preview ? <video src={portfolioAsset(project.video.preview)} poster={portfolioAsset(project.poster)} autoPlay muted loop playsInline /> : <img src={portfolioAsset(project.poster)} alt={`${project.title}项目主海报`} />}<span /></div><div className="page-shell case-hero-copy"><button type="button" onClick={() => onHome('projects')}>← 返回项目档案</button><p>{project.number} / {project.category} / {project.year}</p><h1>{project.title}</h1><h2>{project.tagline}</h2><div><span>{project.role}</span>{project.stats.map((stat) => <b key={stat}>{stat}</b>)}</div></div></section>
 
       <div className="page-shell case-shell">
         <div className="case-main">
@@ -230,7 +231,7 @@ function ProjectCase({ project, onOpenProject, onHome }) {
 
           <section id="abilities" className="case-section"><p className="case-kicker">02 / PERSONAL CAPABILITY</p><header className="case-heading"><h2>在流程之前，先说明<br />我为项目带来了什么。</h2><p>个人能力不是工具清单，而是面对问题时采用的判断与方法。</p></header><AbilityGrid project={project} /></section>
 
-          {project.video && <section id="film" className="case-section film-section"><p className="case-kicker">03 / {project.video.label.toUpperCase()}</p><header className="case-heading"><h2>{project.video.label}</h2><p>时长 {project.video.duration}。这里播放的是完整作品，浏览器可直接查看。</p></header><div className="full-film"><ProjectVisual project={project} mode="full" controls /><span>FULL FILM / {project.video.duration}</span></div>{project.id === 'slow-life' && <details className="trailer-panel"><summary>补充查看 00:28 片花（非正片）</summary><video key="slow-life-trailer" src={portfolioAsset(project.video.preview)} controls playsInline preload="metadata" poster={portfolioAsset(project.poster)} /></details>}</section>}
+          {project.video && <section id="film" className="case-section film-section"><p className="case-kicker">03 / {project.video.label.toUpperCase()}</p><header className="case-heading"><h2>{project.video.label}</h2><p>时长 {project.video.duration}。这里播放的是完整作品，浏览器可直接查看。</p></header><div className="full-film"><ProjectVisual project={project} mode="full" controls /><span>FULL FILM / {project.video.duration}</span></div>{project.backgroundMusic && <div className="project-audio"><span>BACKGROUND MUSIC</span><audio src={portfolioAsset(project.backgroundMusic)} controls preload="metadata" /></div>}{project.id === 'slow-life' && <details className="trailer-panel"><summary>补充查看 00:28 片花（非正片）</summary><video key="slow-life-trailer" src={portfolioAsset(project.video.preview)} controls playsInline preload="metadata" poster={portfolioAsset(project.poster)} /></details>}</section>}
 
           <section id="workflow" className="case-section workflow-section"><p className="case-kicker">{project.video ? '04' : '03'} / COMPLETE WORKFLOW</p><header className="case-heading"><h2>从问题到交付，<br />完整说明如何完善。</h2><p>点击每一步，查看具体改进、交付物与对应证据。</p></header><div className="workflow-tabs">{project.process.map((item, index) => <button type="button" className={index === stepIndex ? 'active' : ''} onClick={() => setStepIndex(index)} key={item.number}><span>{item.number}</span><b>{item.title}</b></button>)}</div><article className="workflow-detail"><div className="workflow-copy"><p>STEP {step.number}</p><h3>{step.title}</h3><strong>{step.summary}</strong><h4>这一步如何完善作品</h4><blockquote>{step.improvement}</blockquote><h4>阶段交付</h4><ul>{step.deliverables.map((item) => <li key={item}>{item}</li>)}</ul></div><div className="workflow-media">{step.evidence.map((image, index) => <button type="button" onClick={() => openImage(image)} key={`${image}-${index}`}><img src={portfolioAsset(image)} alt={`${step.title}流程证据 ${index + 1}`} loading="lazy" /><span>证据 {String(index + 1).padStart(2, '0')} ↗</span></button>)}</div></article></section>
 
